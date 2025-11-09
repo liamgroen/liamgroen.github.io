@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,18 +71,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../../">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-630147fbe0b9ab2b2a517857e522e257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-39017ca276f174ce8ea5a4ccd8dd1b5a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-630147fbe0b9ab2b2a517857e522e257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -311,6 +312,8 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
@@ -347,9 +350,6 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="65dbd6c50ac49b8a389886ebce9e21d4" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p>Daily ‘100 day’ updates will resume at the end of June, when I will be done with my exams.</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
@@ -429,7 +429,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <div id="8e8c28fb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
@@ -529,17 +529,17 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>loss_function <span class="op">=</span> nn.CrossEntropyLoss()</span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.SGD(model.parameters(), lr<span class="op">=</span>learning_rate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> torch.optim.SGD(model.parameters(), lr<span class="op">=</span>learning_rate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Training the model again:</p>
 <div id="20732fe2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">10</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>t<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">-------------------------------"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    train_loop(train_dataloader, model, loss_function, optimizer)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    checking_loop(test_dataloader, model, loss_function)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Done!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Done!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details>
 <summary>
@@ -704,18 +704,18 @@ Done!</code></pre>
 </details>
 <p>The learned weights are stored in an attribute called <code>state_dict</code>. We can save these weights to a file to reuse them later by calling <code>torch.save()</code> on the attribute.</p>
 <div id="953fa2c9" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>torch.save(model.state_dict(), <span class="st">"model_weights.pth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>torch.save(model.state_dict(), <span class="st">"model_weights.pth"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="how-to-load-a-saved-model" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-load-a-saved-model">How to Load a Saved Model?</h2>
 <p>To load the saved model, we first need to create a new instance of the same model class. Just the weights won’t do us any good, they need to correspond to the correct model structure. After instantiating a new model, we can copy the weights to it.</p>
 <div id="dbaffba9" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> torch.load(<span class="st">"model_weights.pth"</span>, weights_only<span class="op">=</span><span class="va">True</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> torch.load(<span class="st">"model_weights.pth"</span>, weights_only<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>model_from_weights <span class="op">=</span> OurNeuralNetwork()</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>model_from_weights.load_state_dict(weights)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>model_from_weights.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>model_from_weights.<span class="bu">eval</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details>
 <summary>
@@ -739,10 +739,10 @@ Show output
 <p>We now have an exact copy of the neural network in a new variable!</p>
 <p>If we want, we can inspect all the parameters (e.g to create visualizations that explain the model) through the models’ <code>state_dict()</code></p>
 <div id="0493eafc" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>layer_2_bias <span class="op">=</span> model.state_dict()[<span class="st">'linear_relu_chain.2.bias'</span>] <span class="co"># We can access stored parameters through the state_dict keys</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>layer_2_bias <span class="op">=</span> model.state_dict()[<span class="st">'linear_relu_chain.2.bias'</span>] <span class="co"># We can access stored parameters through the state_dict keys</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"stored parameters in the form of 'layer_num.type': "</span>, model.state_dict().keys(), <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Amount of values in the layer 2 bias:"</span>, layer_2_bias.shape, <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>) </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First 10 biases in layer 2:"</span>, layer_2_bias[:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First 10 biases in layer 2:"</span>, layer_2_bias[:<span class="dv">10</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="560de6d5" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
@@ -765,12 +765,12 @@ First 3 biases in layer 2: tensor([0.0234, 0.0045, 0.0241])</code></pre>
 <h2 class="anchored" data-anchor-id="how-to-use-pre-trained-models">How to Use Pre-Trained Models?</h2>
 <p>We don’t <em>have</em> to train every model that we want to use ourselves. Lots of times, a better model trained on more data for longer is available freely online. PyTorch comes with <a href="https://docs.pytorch.org/vision/stable/models.html">pre-built model structures</a> and weights for these models.</p>
 <div id="8542fb28" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> resnet50, ResNet50_Weights</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> resnet50, ResNet50_Weights</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> ResNet50_Weights.DEFAULT</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> resnet50(weights)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">eval</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">eval</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now use the ResNet50 model with best weights in our code.</p>
 </section>
@@ -852,13 +852,14 @@ First 3 biases in layer 2: tensor([0.0234, 0.0045, 0.0241])</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

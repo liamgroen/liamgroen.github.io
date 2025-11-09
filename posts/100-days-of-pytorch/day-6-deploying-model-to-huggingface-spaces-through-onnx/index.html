@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,18 +71,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../../">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-630147fbe0b9ab2b2a517857e522e257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-39017ca276f174ce8ea5a4ccd8dd1b5a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-630147fbe0b9ab2b2a517857e522e257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -313,6 +314,8 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
@@ -349,9 +352,6 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="65dbd6c50ac49b8a389886ebce9e21d4" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p>Daily ‘100 day’ updates will resume at the end of June, when I will be done with my exams.</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
@@ -433,7 +433,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <p>In this section I assume that you have a trained model called <code>torch_model</code>. If you don’t have one, or don’t know how to train your own model yet, <a href="../../../posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html">this post</a> explains how to build and train your own model.</p>
 <p>Let’s export our model to ONNX format. Since <code>onnx.export</code> runs the model, we need to supply an example input. Furthermore If we don’t want the batch size to be stationary, we need to set the <code>dynamic_axes</code> parameter.</p>
 <div id="ae2ed722" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">1</span> <span class="co"># Random batch size</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">1</span> <span class="co"># Random batch size</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>example_inputs <span class="op">=</span> torch.rand((batch_size, <span class="dv">28</span>, <span class="dv">28</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>onnx_program <span class="op">=</span> torch.onnx.export(torch_model,</span>
@@ -447,21 +447,21 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                                 f<span class="op">=</span><span class="st">"converted_model.onnx"</span>,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                 export_params<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                 do_constant_folding<span class="op">=</span><span class="va">True</span> <span class="co"># Optimization</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                 )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                 )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="running-the-onnx-model" class="level2">
 <h2 class="anchored" data-anchor-id="running-the-onnx-model">Running The ONNX Model</h2>
 <p>We can run <em>any</em> ONNX model inside python, using the <code>onnxruntime</code> package. Let’s run our own model that we just exported by downloading it from <code>converted_model.onnx</code>.</p>
 <div id="b95c9e75" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnx</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnx</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> onnx.load(<span class="st">"converted_model.onnx"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>onnx.checker.check_model(model) <span class="co"># If this does not raise an error, we can continue</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>onnx.checker.check_model(model) <span class="co"># If this does not raise an error, we can continue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Since ONNX does not support all data types that PyTorch uses, we need to do a bit of pre-processing before we can actually run the model.</p>
 <div id="e6017bb4" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnxruntime <span class="im">as</span> ort</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnxruntime <span class="im">as</span> ort</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 'session', which will run the model</span></span>
@@ -490,7 +490,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>input_values <span class="op">=</span> to_numpy(testing_image)</span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>ort_inputs <span class="op">=</span> {input_name: input_values}</span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>ort_outputs <span class="op">=</span> ort_session.run(<span class="va">None</span>, ort_inputs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>ort_outputs <span class="op">=</span> ort_session.run(<span class="va">None</span>, ort_inputs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -510,17 +510,17 @@ Tip
 <h2 class="anchored" data-anchor-id="sanity-checking-output">Sanity Checking Output</h2>
 <p>Using ONNX comes with the advantage of a standardized model format which we can run anywhere, but it still needs to give the same output as the model that we trained using PyTorch. Let’s make sure that nothing went wrong during conversion by comparing the PyTorch model output and the ONNX model output on the same input:</p>
 <div id="acf7026b" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>torch_outputs <span class="op">=</span> torch_model(testing_image)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>torch_outputs <span class="op">=</span> torch_model(testing_image)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>torch_outputs <span class="op">=</span> to_numpy(torch_outputs)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>np.testing.assert_allclose(ort_outputs[<span class="dv">0</span>], torch_outputs, rtol<span class="op">=</span><span class="fl">1e-03</span>, atol<span class="op">=</span><span class="fl">1e-05</span>) <span class="co"># No error: good to go!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>np.testing.assert_allclose(ort_outputs[<span class="dv">0</span>], torch_outputs, rtol<span class="op">=</span><span class="fl">1e-03</span>, atol<span class="op">=</span><span class="fl">1e-05</span>) <span class="co"># No error: good to go!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="how-to-get-onnx-predicted-labels" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-get-onnx-predicted-labels">How To Get ONNX predicted labels?</h2>
 <p>We can get the labels back by using <code>np.argmax</code>:</p>
 <div id="e49a226f" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idx_to_class <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idx_to_class <span class="op">=</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>: <span class="st">'T-shirt/top'</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">'Trouser'</span>,</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="st">'Pullover'</span>,</span>
@@ -533,7 +533,7 @@ Tip
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">9</span>: <span class="st">'Ankle boot'</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>label_index <span class="op">=</span> np.argmax(ort_outputs[<span class="dv">0</span>], axis<span class="op">=</span><span class="dv">1</span>).item()</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>class_label <span class="op">=</span> idx_to_class[label_index]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>class_label <span class="op">=</span> idx_to_class[label_index]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -567,15 +567,15 @@ Tip
 <div id="d27f859d" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show imports</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnxruntime <span class="im">as</span> ort</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gradio <span class="im">as</span> gr</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> ResNet50_Weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> ResNet50_Weights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="45a7d15c" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> ResNet50_Weights.DEFAULT</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> ResNet50_Weights.DEFAULT</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>preprocess <span class="op">=</span> weights.transforms() <span class="co"># Necessary input transformations</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ort_session <span class="op">=</span> ort.InferenceSession(<span class="st">"resnet50.onnx"</span>, providers<span class="op">=</span>[<span class="st">"CPUExecutionProvider"</span>])</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -592,12 +592,12 @@ Tip
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    label_index <span class="op">=</span> np.argmax(ort_outputs[<span class="dv">0</span>], axis<span class="op">=</span><span class="dv">1</span>).item()</span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    predicted_label <span class="op">=</span> weights.meta[<span class="st">"categories"</span>][label_index]</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> predicted_label</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> predicted_label</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>That’s it! Now we can build the interface:</p>
 <div id="64e32655" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>demo <span class="op">=</span> gr.Interface(predict, gr.Image(<span class="bu">type</span><span class="op">=</span><span class="st">"pil"</span>, image_mode<span class="op">=</span><span class="st">"RGB"</span>), gr.Label())</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>demo.launch()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>demo <span class="op">=</span> gr.Interface(predict, gr.Image(<span class="bu">type</span><span class="op">=</span><span class="st">"pil"</span>, image_mode<span class="op">=</span><span class="st">"RGB"</span>), gr.Label())</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>demo.launch()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Your file structure should look like this:</p>
 <div id="17c960d9" class="cell" data-execution_count="11">
@@ -685,13 +685,14 @@ Tip
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

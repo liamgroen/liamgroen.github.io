@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,18 +71,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../../">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-630147fbe0b9ab2b2a517857e522e257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-39017ca276f174ce8ea5a4ccd8dd1b5a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-630147fbe0b9ab2b2a517857e522e257.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -316,6 +317,8 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
@@ -352,9 +355,6 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="65dbd6c50ac49b8a389886ebce9e21d4" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p>Daily ‘100 day’ updates will resume at the end of June, when I will be done with my exams.</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
@@ -446,15 +446,15 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <div id="d725a62e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show imports</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> ToTensor</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="8248706e" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> datasets.FashionMNIST(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> datasets.FashionMNIST(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
@@ -466,21 +466,21 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ToTensor()</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="dataset-attributes" class="level2">
 <h2 class="anchored" data-anchor-id="dataset-attributes">Dataset attributes</h2>
 <p>Now that we saved the fashionMNIST dataset in a Dataset object, what can we do with it?</p>
 <div id="selecting-img-label" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset summary </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset summary </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>training_data</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Class labels</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>training_data.classes</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Select a row of data</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>img, label <span class="op">=</span> training_data[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>img, label <span class="op">=</span> training_data[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details>
 <summary>
@@ -529,8 +529,8 @@ Tip
 </div>
 </div>
 <div id="dd0c3c69" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img.squeeze(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.set_title(training_data.classes[label])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img.squeeze(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.set_title(training_data.classes[label])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="b1faa2b0" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
@@ -552,7 +552,7 @@ Tip
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -562,22 +562,22 @@ Tip
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>tshirt1.jpg</td>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>tshirt2.jpg</td>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>...</td>
 <td>...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>ankleboot999.jpg</td>
 <td>9</td>
 </tr>
@@ -589,7 +589,7 @@ Tip
 </div>
 <p>We would define a custom dataset class as such:</p>
 <div id="cf755074" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.io <span class="im">import</span> read_image</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -613,7 +613,7 @@ Tip
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            img <span class="op">=</span> <span class="va">self</span>.transform(img)</span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.target_transform:</span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            label <span class="op">=</span> <span class="va">self</span>.target_transform(label)</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> img, label</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> img, label</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The code above is a bit involved, so let’s walk through it.</p>
 <ul>
@@ -627,19 +627,19 @@ Tip
 <h2 class="anchored" data-anchor-id="how-to-use-the-pytorch-dataloader-class">How to use the PyTorch DataLoader class</h2>
 <p>In the code above we only specified how to return a single (image, label) pair. In practice, we typically use lots of images and labels (called batches) for per training step. Additionally, we want to shuffle data (to prevent overfitting) and we want to speed up the process using multiprocessing. This is where the DataLoader class steps in. Let’s use the DataLoader to retrieve 64 images at once.</p>
 <div id="f553a5ad" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>train_dataloader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>test_dataloader <span class="op">=</span> DataLoader(test_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data for one simulated training step</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>train_image_features, train_labels <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>train_image_features, train_labels <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember that these images are the data used for one training step. Let’s see the batch of images that our dataloader just sent us.</p>
 <div id="4e623f98" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show visualization code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>figure <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>figure <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cols, rows <span class="op">=</span> <span class="dv">8</span>, <span class="dv">8</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(cols <span class="op">*</span> rows):</span>
@@ -650,7 +650,7 @@ Tip
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    plt.imshow(img.squeeze(), cmap<span class="op">=</span><span class="st">"gray"</span>)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    plt.title(training_data.classes[train_labels[idx]], pad<span class="op">=</span><span class="dv">1</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -666,7 +666,7 @@ Tip
 <h2 class="anchored" data-anchor-id="different-ways-to-shuffle">Different ways to shuffle</h2>
 <p>We can also control <em>how</em> data is shuffled (or in other words, the way that the random batch is sampled). We do this by setting the <code>sampler</code> parameter of the DataLoader. When doing this we have to set <code>shuffle=False</code>, since the shuffle parameter essentially sets the sampler parameter for us.</p>
 <div id="8e29352f" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data.sampler <span class="im">import</span> SequentialSampler, SubsetRandomSampler</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns images in order.</span></span>
@@ -675,7 +675,7 @@ Tip
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample randomly, only including the images 50-100.</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> np.arange(<span class="dv">50</span>, <span class="dv">101</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>train_loader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">32</span>, sampler<span class="op">=</span>SubsetRandomSampler(indices))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>train_loader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">32</span>, sampler<span class="op">=</span>SubsetRandomSampler(indices))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>These DataLoaders will select images in order of appearance in data, and randomly sample a subset of the data. Read about all the ways to sample in the <a href="https://docs.pytorch.org/docs/stable/data.html#data-loading-order-and-sampler">PyTorch documentation</a>.</p>
 <p><strong>To summarize:</strong> With Dataset and DataLoader, PyTorch makes it easy to manage data efficiently and flexibly. In future posts, we’ll explore how these tools integrate into full training loops.</p>
@@ -752,13 +752,14 @@ Tip
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

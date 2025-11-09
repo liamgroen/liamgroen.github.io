@@ -19,12 +19,7 @@ website:
       - about.qmd
       - icon: github
         href: https://github.com/liamgroen
-  announcement: 
-    icon: info-circle
-    dismissable: true
-    type: info
-    position: below-navbar
-    content: Daily '100 day' updates will resume at the end of June, when I will be done with my exams.
+
 
 
 format:

@@ -19,26 +19,15 @@ listing:
     filter-ui: false
 ---
 
-# 👋 Welcome
-Hi, I'm Liam, a student on a journey to understand the world through **machine learning**, **coding**, **data science**, and **mathematics**.
+# Welcome
+Hi, I'm Liam, a Dutchie studying **machine learning** and **mathematics**.
 
-This blog is my digital lab notebook — a place where I explain what I’m learning, work through complex topics, and share insights that might help others learning too.
+This blog is a place where I explain what I’m learning, work through complex topics, and share insights that might help others learning too.
 
 Whether you're just starting out or deep into the field, I hope you find something useful here.
 
 
-## 🧠 Why I blog
-
-Writing is thinking. By distilling ideas into blog posts, I’m aiming to:
-
-- Deepen my understanding of technical topics.
-
-- Build a consistent habit of learning and reflection.
-
-- Create a public portfolio of work as I grow in this field.
-
-
-## 📬 Recent posts
+## Recent posts
 :::{#recent-posts}
 :::
 

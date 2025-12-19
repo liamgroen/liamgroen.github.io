@@ -1,52 +1,37 @@
 ---
-title: "Day 5: PyTorch Basics - Saving and Loading Models"
-pagetitle: "PyTorch Basics - Saving and Loading Models"
-description: "Previously, we learned how to train a neural network model. But how do we actually make predictions with it? And how can we use open-source models that other people trained? In this post we learn how to store and load the weights that the model learned during training, and how to use open-source models and weights"
-description-meta: "In this post we learn how to store and load the weights that the model learned during training, and how to use open-source models and weights, using torchvision.models"
-image: "thumbnail.jpg"
-date: "2025-05-12"
+title: "Day 4 - PyTorch Basics: Building and Training a Neural Network"
+pagetitle: "PyTorch Basics: Building and Training a Neural Network"
+
+description: >
+  Learn how to use `torch.nn` to build the neural network structure, and how to train the model to recognize images, using a training and evaluation loop. It assumes you are already familiar with the theory behind neural networks (i.e loss functions, gradient descent).
+
+description-meta: >
+  Learn how to use `torch.nn` to build the neural network structure, and how to train the model to recognize images, using a training and evaluation loop.
+
+date: "2025-05-11"
+date-modified: "2025-05-12"
 date-meta: "2025-05-12"
 
-keywords: [Save PyTorch model, Load PyTorch model, Open-Source Models, Pre Trained Model]
-jupyter: python3
+keywords: ["Neural Network"]
 ---
 
-*This post is part of a series on deploying models, other posts include:*
+## Defining the Network 
 
-- [Deploying a model to HuggingFace Spaces through ONNX](../day-6-deploying-model-to-huggingface-spaces-through-onnx/index.qmd)
-
-## How to Save a PyTorch Model?
-Let's reuse our model training code from the [previous blog post](../day-4-building-and-training-a-neural-network/index.qmd).
-
+<details>
+<summary>Show imports</summary>
 ```{python}
-#| output: false
-#| code-fold: true
-#| code-summary: "Show code"
-
+import os
 import torch
-import numpy as np
 from torch import nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-from torchvision.transforms import ToTensor
+```
+</details>
 
-training_data = datasets.FashionMNIST(
-    root="data",
-    train=True,
-    download=True,
-    transform=ToTensor()
-)
 
-test_data = datasets.FashionMNIST(
-    root="data",
-    train=False,
-    download=True,
-    transform=ToTensor()
-)
+PyTorch allows us to create any neural network, using predefined building blocks from the module `torch.nn`. Every neural network we create should specify the `forward` method
 
-train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
-test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
-
+```{python}
 class OurNeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
@@ -69,7 +54,107 @@ class OurNeuralNetwork(nn.Module):
         predictions = self.linear_relu_chain(input) # Shape: (784) -> shape: (512) -> shape: (512) -> shape: (10)
         
         return predictions
+```
 
+Lets instantiate it. In PyTorch, we also have to specify it on what device type we want to train our model. This allows for quicker training, depending on device type.
+
+```{python}
+model = OurNeuralNetwork().to("cpu") # or cuda, mps, mtia, xpu
+print("using cpu")
+```
+
+```{python}
+model
+```
+
+## Testing the Network
+
+Lets simulate an 28x28 pixel image with some random numbers
+
+```{python}
+shape = (1, 28, 28)
+fake_image = torch.rand(shape, device="cpu") # the tensor needs to be on the same device as the model
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: Show plotting code
+import matplotlib.pyplot as plt
+
+plt.imshow(fake_image.squeeze())
+plt.axis("off")
+plt.title("Fake number - random 28x28 tensor")
+plt.show()
+```
+
+```{python}
+model_outputs = model(fake_image)
+```
+
+Even though we specified `nn.Linear(in_features=28*28)`, we set `shape = (1, 28, 28)` and not to `(28, 28)`. This is because the model expects the first number to be the amount of images we use per batch of training. Since we are not actually training the model right now we set it to `1`.
+
+```{python}
+probabilities = nn.Softmax(dim=1)(model_outputs)
+predicted_label = probabilities.argmax(1)
+predicted_label.item()
+```
+
+Of course, the output is completely random, since the network was not trained and since the image was not actually a number. 
+
+## Training and Evaluating the Network
+
+Let's train the network on the FashionMNIST dataset to classify images. For this we import the dataset using the code from a previous post explaining PyTorch [Datasets and DataLoaders](../datasets-dataloaders/index.qmd)
+
+```{python}
+#| eval: false
+#| code-fold: false
+#| code-summary: Show code
+
+
+training_data = datasets.FashionMNIST(
+    root="data",
+    train=True,
+    download=True,
+    transform=transforms.ToTensor()
+)
+
+test_data = datasets.FashionMNIST(
+    root="data",
+    train=False,
+    download=True,
+    transform=transforms.ToTensor()
+)
+
+train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
+test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
+```
+
+We need to specify 3 parameters:
+
+- **Number of Epochs -** How many times to iterate over the entire dataset.
+
+- **Learning Rate -** A scaling factor specifying how much to update the model parameters each iteration
+
+- **Batch Size -** How much examples to iterate over before updating parameters.
+
+
+Per batch of images, model parameters are updated, until all images in the dataset have been seen. This process is repeated for the specified number of epochs.
+
+```{python}
+#| eval: false
+learning_rate = 1e-3
+batch_size = 64
+epochs = 5
+```
+
+In each epoch we also want to check the model performance (to see if it is improving). That is why we will build two loops. 
+
+- **Training Loop -** Update parameters by showing model images with labels (from `train_dataloader`)
+
+- **Checking Loop -** Evaluate model performance with learned parameters from the training loop on new images (from `test_dataloader`)
+
+```{python}
+#| eval: false
 def train_loop(dataloader, model, loss_func, optimizer):
     size = len(dataloader.dataset)
     model.train() # Set model to training mode
@@ -114,24 +199,23 @@ def checking_loop(dataloader, model, loss_func):
     test_loss /= number_of_batches
     correct_amount /= size
     print(f"Test Error: \n Accuracy: {(100*correct_amount):>0.1f}%, Avg loss: {test_loss:>8f} \n")
-
-
-model = OurNeuralNetwork().to("cpu")
-
-learning_rate = 1e-3
-batch_size = 64
-epochs = 5
-
-loss_function = nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-
 ```
 
-Training the model again:
+:::{.callout-warning}
+be sure to call `model.eval()` before inferencing to set the dropout and batch normalization layers (not used in our model) to evaluation mode. Failing to do this will yield inconsistent inference results.
+:::
+
+Lets train our model, passing a loss function and optimizer.
 
 ```{python}
 #| eval: false
+loss_function = nn.CrossEntropyLoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+```
+
+```{python}
+#| eval: false
+# Train the model
 epochs = 10
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
@@ -142,7 +226,6 @@ print("Done!")
 
 <details>
 <summary>Show output</summary>
-
 ```{python}
 #| echo: false
 
@@ -301,75 +384,8 @@ Done!""")
 ```
 </details>
 
-The learned weights are stored in an attribute called `state_dict`. We can save these weights to a file to reuse them later by calling `torch.save()` on the attribute.
+## Further reading
 
-```{python}
-torch.save(model.state_dict(), "model_weights.pth")
-```
+- [torch.nn under the hood](https://docs.pytorch.org/tutorials/beginner/nn_tutorial.html)
 
-## How to Load a Saved Model?
-To load the saved model, we first need to create a new instance of the same model class. Just the weights won't do us any good, they need to correspond to the correct model structure. After instantiating a new model, we can copy the weights to it.
-
-```{python}
-#| output: false
-weights = torch.load("model_weights.pth", weights_only=True)
-
-model_from_weights = OurNeuralNetwork()
-model_from_weights.load_state_dict(weights)
-model_from_weights.eval()
-```
-
-<details><summary>Show output</summary>
-
-```{python}
-#| echo: false
-model_from_weights.eval()
-```
-</details>
-
-We now have an exact copy of the neural network in a new variable! 
-
-If we want, we can inspect all the parameters (e.g to create visualizations that explain the model) through the models' `state_dict()`
-
-```{python}
-#| eval: false
-layer_2_bias = model.state_dict()['linear_relu_chain.2.bias'] # We can access stored parameters through the state_dict keys
-print("stored parameters in the form of 'layer_num.type': ", model.state_dict().keys(), '\n')
-print("Amount of values in the layer 2 bias:", layer_2_bias.shape, '\n') 
-print("First 10 biases in layer 2:", layer_2_bias[:10])
-```
-
-```{python}
-#| echo: false
-layer_2_bias = model.state_dict()['linear_relu_chain.2.bias'] # We can access stored parameters through the state_dict keys
-print("stored parameters in the form of 'layer_num.type': ")
-print("[")
-for state in model.state_dict().keys():
-    print(f"    '{state}',")
-print("]")
-print("Amount of values in the layer 2 bias:", layer_2_bias.shape, '\n') 
-print("First 3 biases in layer 2:", layer_2_bias[:3])
-```
-
-## How to Use Pre-Trained Models?
-
-We don't *have* to train every model that we want to use ourselves. Lots of times, a better model trained on more data for longer is available freely online. PyTorch comes with [pre-built model structures](https://docs.pytorch.org/vision/stable/models.html) and weights for these models.
-
-```{python}
-#| eval: false
-from torchvision.models import resnet50, ResNet50_Weights
-
-weights = ResNet50_Weights.DEFAULT
-model = resnet50(weights)
-
-model.eval() 
-```
-
-We can now use the ResNet50 model with best weights in our code.
-
-## Warmstarting / Transfer Learning
-In a scenario where we have a dataset with domain-specific images and we want to train an image recognition model on the data, we don't have to start from scratch. We can define the model structure that we want and use imported weights for initializing the model training. This way the model does not have to learn what an image is again. Since that knowledge is already embedded in the downloaded weights, the model only needs to learn to recognize the domain-specific images. [This PyTorch article](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) explains how to do this.
-
-## Further Reading
-
-- [Saving multiple models in one file](https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html#saving-multiple-models-in-one-file)
+- [torch.nn examples](https://docs.pytorch.org/tutorials/beginner/pytorch_with_examples.html#nn-module)

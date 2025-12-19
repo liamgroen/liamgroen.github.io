@@ -1,0 +1,112 @@
+---
+title: "Machine Learning Basics - Linear Regression"
+pagetitle: "Machine Learning Basics - Linear Regression"
+image: ./images/preview.png
+
+description: "Do you ever wonder how to predict a persons height based on their shoe size? Or how a line of best fit through data is found? This posts covers how to use linear regression for prediction and "
+
+date: "2025-05-08" 
+date-meta: "2025-05-08"
+
+keywords: [Tensor]
+---
+
+## What is linear regression?
+In this post I will be taking you through the basics of a fundamental machine learning problem: regression. 
+
+As a toy problem, let's say we want to predict a persons height, based on their shoe size. To tackle the task, we are going to need data on peoples shoe size and their corresponding height. 
+
+![insert figure here]
+
+We will create a line that passes close to all datapoints. Using the line we can make a guess about a persons height based on their shoe size.
+
+![insert figure here]
+
+To decide what a 'good line'is, we will define a function $\mathcal{L}$ as follows: 
+$$
+\mathcal{L} = \frac{1}{N} \sum^N_{i=1}{(y_i - f(x_i))^2}
+$$
+
+This function tells us the average distance between the line (predicted heights) and datapoints (actual heights), where $N$ is the amount of datapoints, $y_i$ is the target value (a persons height) and $f(x_i)$ is the function that estimates height given a shoe size $x_i$.
+
+If we find the line that corresponds to the lowest value of $\mathcal{L}$, we have found the line that lies, on average, closest to all data points. The central belief in linear regression is that unseen datapoints will also lie close to the line, allowing us to make predictions. Looking at the data, a reasonable choise for $f(x_i)$ is the straight line equation
+
+$$
+w_0 + w_1 \cdot x_i
+$$
+
+Which could suit as a good estimation line, given suitable parameter values (weights) $w_0$ and $w_1$ for intercept and slope. 
+
+Our task now is to find the weights that minimize 
+
+$$
+\mathcal{L} = \frac{1}{N} \sum^N_{i=1}{(y_i - (w_0 + w_1 \cdot x_i
+))^2}
+$$
+
+## How to find the optimal linear regression weights? 
+
+If we let
+
+$$
+\mathbf{x}_i = \begin{pmatrix}1 & x_i \end{pmatrix}^T
+$$
+
+We can neatly express $f(x_i) =  w_0 \cdot 1 + w_1 \cdot x_i$, as $\mathbf{w}^T\mathbf{x}_i$
+
+We can now begin to rewrite our original expression for $\mathcal{L}$
+$$
+\begin{align}
+\mathcal{L} &= \frac{1}{N} \sum^N_{i=1}{(y_i - \mathbf{w}^T\mathbf{x}_i)^2} \\
+&= \frac{1}{N}(\mathbf{y} - \mathbf{Xw})^T(\mathbf{y} - \mathbf{Xw})
+\end{align}
+$$
+
+Where 
+
+$$
+\mathbf{X} = \begin{pmatrix}
+\mathbf{x}_0^T \\
+\vdots \\
+\mathbf{x}_N^T
+\end{pmatrix}, \quad \mathbf{w} = \begin{pmatrix}
+w_0 \\
+w_1 
+\end{pmatrix},\quad \mathbf{y} = \begin{pmatrix}
+y_0 \\
+y_1 \\
+\vdots \\
+y_N
+\end{pmatrix}
+$$
+
+
+Since our loss is quadratic, we can find the lowest point by differenting with respect to $\mathbf{w}$, equating to zero, and solving for $\mathbf{w}$. This will give the weights corresponding to the line with the lowest average distance from the datapoints.
+
+We start by foiling out the expression
+$$
+\begin{align}
+& \frac{1}{N}(\mathbf{y} - \mathbf{Xw})^T(\mathbf{y} - \mathbf{Xw})\\
+&= \frac{1}{N}(\mathbf{y}^T - \mathbf{w}^T\mathbf{X}^T)(\mathbf{y} - \mathbf{Xw}) \\
+&= \frac{1}{N}(\mathbf{y}^T\mathbf{y} - \mathbf{w}^T\mathbf{X}^T\mathbf{y} - \mathbf{y}^T\mathbf{Xw} + \mathbf{w}^T\mathbf{X}^T\mathbf{Xw}) \\
+&= \frac{1}{N}\mathbf{y}^T\mathbf{y} - \frac{2}{N}\mathbf{w}^T\mathbf{X}^T\mathbf{y} + \frac{1}{N}\mathbf{w}^T\mathbf{X}^T\mathbf{Xw}
+\end{align}
+$$
+
+Differentiating with respect to $\mathbf{w}$ we get
+
+$$
+\frac{\partial\mathcal{L}}{\partial\mathbf{w}} = -\frac{2}{N}\mathbf{X}^T\mathbf{y} + \frac{2}{N}\mathbf{X}^T\mathbf{X}\mathbf{w} 
+$$
+
+Equating to zero and solving for $\mathbf{w}$:
+
+$$
+\begin{align}
+&\mathbf{X}^T\mathbf{X}\mathbf{w} = \mathbf{X}^T\mathbf{y}\\
+&\hat{\mathbf{w}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}
+\end{align}
+$$
+
+## How to make predictions using the optimal weights? 
+Of course, a line of best fit is cool, but how do we use it? We make predictions by taking the dot product of the new datapoint and the found weights.

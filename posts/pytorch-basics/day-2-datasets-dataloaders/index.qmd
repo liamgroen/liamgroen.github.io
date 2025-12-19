@@ -9,7 +9,6 @@ date: "2025-05-09"
 date-meta: "2025-05-09"
 
 keywords: [Dataset, DataLoader]
-jupyter: python3
 ---
 
 ## Why seperate classes anyway?

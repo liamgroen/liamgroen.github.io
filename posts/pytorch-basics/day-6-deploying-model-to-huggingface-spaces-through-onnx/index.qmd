@@ -8,7 +8,6 @@ date: "2025-05-13"
 date-meta: "2025-05-13"
 
 keywords: [ONNX, HuggingFace, HuggingFace Spaces, Deploy Model, Gradio]
-jupyter: python3
 ---
 
 At the end of this tutorial, we will have a running deployment of an ONNX model on Hugging Face Spaces:
@@ -34,6 +33,7 @@ Let's export our model to ONNX format. Since `onnx.export` runs the model, we ne
 #| output: false
 from torch import nn
 import torch
+
 
 class OurNeuralNetwork(nn.Module):
     def __init__(self):
@@ -99,10 +99,10 @@ Since ONNX does not support all data types that PyTorch uses, we need to do a bi
 ```{python}
 #| echo: false
 #| output: false
+import numpy as np
 
 import onnx
 import onnxruntime as ort
-import numpy as np
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 

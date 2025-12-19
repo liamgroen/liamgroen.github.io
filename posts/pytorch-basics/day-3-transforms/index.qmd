@@ -10,7 +10,6 @@ date: "2025-05-10"
 date-meta: "2025-05-10"
 
 keywords: [Transforms, ToTensor]
-jupyter: python3
 ---
 
 ## Why do we need transform?

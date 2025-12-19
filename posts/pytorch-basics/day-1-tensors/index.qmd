@@ -10,7 +10,6 @@ date: "2025-05-08"
 date-meta: "2025-05-08"
 
 keywords: [Tensor]
-jupyter: python3
 ---
 ## What is a tensor?
 If you are familiar with math, it might help to think about a tensor as an n-dimensional matrix. If you are not familiar with math, or just want a better explanation, you can think of a tensor as a collection of structured numbers that we can do *quick math* with. A tensor has two properties: shape, and dimension. *Shape* means how many numbers the tensor has along each axis. *Dimension* means the amount of axes that the tensor has. In the picture below, the dimension corresponds with the number of colored arrows, and the shape is denoted below the tensor.

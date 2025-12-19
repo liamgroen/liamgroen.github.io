@@ -13,7 +13,7 @@ website:
     anonymize-ip: true
   navbar:
     left:
-      - 100-days-of-pytorch.qmd
+      - pytorch-basics.qmd
       - posts.qmd
     right:
       - about.qmd
@@ -36,4 +36,5 @@ format:
 
 execute:
   freeze: auto
+  jupyter: python3
 

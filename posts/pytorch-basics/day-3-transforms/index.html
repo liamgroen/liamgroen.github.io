@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Liam Groen">
-<meta name="dcterms.date" content="2025-05-09">
-<meta name="keywords" content="Dataset, DataLoader, PyTorch Dataset, Pytorch Dataloader">
-<meta name="description" content="In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will cover how to use the PyTorch Dataset class, Dataset attributes, How to use the Pytorch DataLoader class, and how to control the DataLoader sample">
+<meta name="dcterms.date" content="2025-05-10">
+<meta name="keywords" content="Transforms, ToTensor">
+<meta name="description" content="In this post, we will learn how to transform images using the built-in <code>ToTensor</code> method. We will also learn how to create and use a custom transform that we define ourselves">
 
-<title>PyTorch Basics - Dataset and DataLoader – Liam's Learning</title>
+<title>Pytorch Basics - Transforms – Liam's Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,7 +62,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -76,9 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -125,18 +125,13 @@ gtag('js', new Date());
   });
 gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="PyTorch Basics - Dataset and DataLoader">
-<meta property="og:description" content="In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will see that working with these classes is pretty easy, and allows us to use all kinds of handy built-in methods.">
-<meta property="og:image" content="https://liamgroen.nl/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index_files/figure-html/cell-8-output-1.png">
+<meta property="og:title" content="Pytorch Basics - Transforms">
+<meta property="og:description" content="Posts about machine learning, deep learning, math and coding.">
+<meta property="og:image" content="https://liamgroen.nl/posts/pytorch-basics/day-3-transforms/TransformManyVectors.svg">
 <meta property="og:site_name" content="Liam's Learning">
-<meta property="og:image:height" content="374">
-<meta property="og:image:width" content="334">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -317,8 +312,6 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
@@ -330,8 +323,8 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../100-days-of-pytorch.html"> 
-<span class="menu-text">100 Days Of PyTorch</span></a>
+    <a class="nav-link" href="../../../pytorch-basics.html"> 
+<span class="menu-text">PyTorch Basics</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../../posts.html"> 
@@ -360,13 +353,8 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Day 2: PyTorch Basics - Dataset and DataLoader</h1>
-                  <div>
-        <div class="description">
-          In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will see that working with these classes is pretty easy, and allows us to use all kinds of handy built-in methods.
-        </div>
-      </div>
-                          <div class="quarto-categories">
+      <h1 class="title">Day 3: Pytorch Basics - Transforms</h1>
+                                <div class="quarto-categories">
                 <div class="quarto-category">100 Days Of PyTorch</div>
               </div>
                   </div>
@@ -385,7 +373,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 9, 2025</p>
+        <p class="date">May 10, 2025</p>
       </div>
     </div>
     
@@ -396,7 +384,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
   <div>
     <div class="keywords">
       <div class="block-title">Keywords</div>
-      <p>Dataset, DataLoader, PyTorch Dataset, Pytorch Dataloader</p>
+      <p>Transforms, ToTensor</p>
     </div>
   </div>
   
@@ -408,13 +396,9 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-seperate-classes-anyway" id="toc-why-seperate-classes-anyway" class="nav-link active" data-scroll-target="#why-seperate-classes-anyway">Why seperate classes anyway?</a></li>
-  <li><a href="#how-to-use-the-pytorch-dataset-class" id="toc-how-to-use-the-pytorch-dataset-class" class="nav-link" data-scroll-target="#how-to-use-the-pytorch-dataset-class">How to use the PyTorch Dataset class?</a></li>
-  <li><a href="#dataset-attributes" id="toc-dataset-attributes" class="nav-link" data-scroll-target="#dataset-attributes">Dataset attributes</a></li>
-  <li><a href="#using-your-own-data-with-dataset" id="toc-using-your-own-data-with-dataset" class="nav-link" data-scroll-target="#using-your-own-data-with-dataset">Using your own data with Dataset</a></li>
-  <li><a href="#how-to-use-the-pytorch-dataloader-class" id="toc-how-to-use-the-pytorch-dataloader-class" class="nav-link" data-scroll-target="#how-to-use-the-pytorch-dataloader-class">How to use the PyTorch DataLoader class</a></li>
-  <li><a href="#different-ways-to-shuffle" id="toc-different-ways-to-shuffle" class="nav-link" data-scroll-target="#different-ways-to-shuffle">Different ways to shuffle</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#why-do-we-need-transform" id="toc-why-do-we-need-transform" class="nav-link active" data-scroll-target="#why-do-we-need-transform">Why do we need transform?</a></li>
+  <li><a href="#how-do-pytorch-transforms-work" id="toc-how-do-pytorch-transforms-work" class="nav-link" data-scroll-target="#how-do-pytorch-transforms-work">How do PyTorch transforms work?</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   </ul>
 </nav>
     </div>
@@ -426,263 +410,55 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 
 
 
-<section id="why-seperate-classes-anyway" class="level2">
-<h2 class="anchored" data-anchor-id="why-seperate-classes-anyway">Why seperate classes anyway?</h2>
-<p>According to PyTorch:</p>
-<p><em>“Code for processing data samples can get messy and hard to maintain; we ideally want our dataset code to be decoupled from our model training code for better readability and modularity.”</em></p>
-<p>In short, we try to prevent messy notebooks and <a href="https://www.ibm.com/think/topics/data-leakage-machine-learning#Causes+of+data+leakage">data leakage</a> by seperating our data and data processing from our model. This is done with the <code>Dataset</code> and <code>DataLoader</code> classes.</p>
+<section id="why-do-we-need-transform" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-need-transform">Why do we need transform?</h2>
+<p>Data comes in many different formats. On the other hand, PyTorch can only do machine learning with one data type, the tensor. Transforms can convert any data to a tensor. In this post, we will look at how to transform images. I will assume that you are familiar with PyTorch Datasets. If you are not, I recommend reading <a href="../../../posts/pytorch-basics/day-2-datasets-dataloaders/index.html">this post</a> before you continue.</p>
 </section>
-<section id="how-to-use-the-pytorch-dataset-class" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-the-pytorch-dataset-class">How to use the PyTorch Dataset class?</h2>
-<p>We will see that working with these classes is pretty easy. PyTorch has commonly datasets built-in, ready to work with. Since the fashionMNIST dataset is used for computer vision-related tasks, it is stored in the <code>torchvision</code> module.</p>
-<p>The fashionMNIST dataset takes 4 parameters:</p>
-<ul>
-<li><p><strong>root</strong> is the folder name where the data will be stored in.</p></li>
-<li><p><strong>train</strong> specifies if you want to download the training or testing data.</p></li>
-<li><p><strong>download</strong> downloads the data from the internet when you don’t have it locally yet.</p></li>
-<li><p><strong>transform</strong> takes a PIL image and transforms it to a tensor.</p></li>
-</ul>
-<p>Let’s import the fashionMNIST dataset.</p>
-<div id="d725a62e" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Show imports</summary>
+<section id="how-do-pytorch-transforms-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-pytorch-transforms-work">How do PyTorch transforms work?</h2>
+<p>All built-in datasets from the torchvision module take the parameters <code>transform</code> and <code>target_tranform</code>. They take in a function that transforms input data into a tensor, following predefined steps. To avoid having to write these functions ourselves, the <code>torchvision.transforms</code> module come with an image-to-tensor transform, called <code>ToTensor</code> out of the box.</p>
+<p>Let’s see an example through the FashionMNIST dataset.</p>
+<div id="616a95d1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> ToTensor</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.datasets <span class="im">import</span> FashionMNIST</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> ToTensor, Lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="8248706e" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> datasets.FashionMNIST(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ToTensor()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> datasets.FashionMNIST(</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ToTensor()</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="8364d757" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> our_own_transformation(target):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Transformes target label to a one-hot tensor</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    example:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; our_own_transformation(3)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; torch.tensor([0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0])</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    zeros_list <span class="op">=</span> torch.zeros(<span class="dv">10</span>, dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    one_hot_index <span class="op">=</span> torch.tensor(target)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    one_hot_tensor <span class="op">=</span> zeros_list.scatter_(<span class="dv">0</span>, one_hot_index, value<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> one_hot_tensor</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ds_train <span class="op">=</span> FashionMNIST(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ToTensor(),</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    target_transform<span class="op">=</span>Lambda(our_own_transformation)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>ds_test <span class="op">=</span> FashionMNIST(</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ToTensor(),</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    target_transform<span class="op">=</span>Lambda(our_own_transformation)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="dataset-attributes" class="level2">
-<h2 class="anchored" data-anchor-id="dataset-attributes">Dataset attributes</h2>
-<p>Now that we saved the fashionMNIST dataset in a Dataset object, what can we do with it?</p>
-<div id="selecting-img-label" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset summary </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>training_data</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Class labels</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>training_data.classes</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Select a row of data</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>img, label <span class="op">=</span> training_data[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<details>
-<summary>
-Show output
-</summary>
-<div id="5b73b70a" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-stdout">
-<pre><code>training_data:
-Dataset FashionMNIST
-    Number of datapoints: 60000
-    Root location: data
-    Split: Train
-    StandardTransform
-Transform: ToTensor() 
-
-training_data.classes:
-[
-  'T-shirt/top',
-  'Trouser',
-  'Pullover',
-  'Dress',
-  'Coat',
-  'Sandal',
-  'Shirt',
-  'Sneaker',
-  'Bag',
-  'Ankle boot',
-] 
-
-label:
-9</code></pre>
-</div>
-</div>
-</details>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It’s always a good idea to inspect your data. Let’s look at <code>img</code> and <code>label</code> from the first row of data.</p>
-</div>
-</div>
-<div id="dd0c3c69" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img.squeeze(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.set_title(training_data.classes[label])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="b1faa2b0" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-8-output-1.png" width="167" height="187" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>That indeed looks like an ankle boot, very nice!</p>
-</section>
-<section id="using-your-own-data-with-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="using-your-own-data-with-dataset">Using your own data with Dataset</h2>
-<p>We don’t always want to use predefined datasets. Very often we have our own data that we want to use. Pytorch has two ways of creating your own dataset. the <em>map-style</em> dataset, which is most commonly used, and the <em>iterable-style</em> dataset, for data that comes in on the fly, such as user-log data. The map-style behaves as you would likely expect from a dataset: you know its length beforehand, and you can select data through an index. For this, map-style datasets need to implement the <code>__len__</code> and <code>__getitem__</code> method. Let’s use our own data with a map-style Dataset.</p>
-<p>Consider the case where we have a csv file of image file names and the labels associated with them.</p>
-<div id="d38b20e4" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Item Name</th>
-<th data-quarto-table-cell-role="th">Label</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
-<td>tshirt1.jpg</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
-<td>tshirt2.jpg</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
-<td>ankleboot999.jpg</td>
-<td>9</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p>We would define a custom dataset class as such:</p>
-<div id="cf755074" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.io <span class="im">import</span> read_image</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomImageDataSet(Dataset):</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, annotations_file, img_dir, transform<span class="op">=</span><span class="va">None</span>, target_transform<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.img_labels <span class="op">=</span> pd.read_csv(annotations_file)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.img_dir <span class="op">=</span> img_dir</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.transform <span class="op">=</span> transform <span class="co"># optional</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.target_transform <span class="op">=</span> target_transform <span class="co"># optional</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.img_labels)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        img_path <span class="op">=</span> os.path.join(<span class="va">self</span>.img_dir, <span class="va">self</span>.img_labels.iloc[idx, <span class="dv">0</span>])</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> read_image(img_path)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> <span class="va">self</span>.img_labels.iloc[idx, <span class="dv">1</span>]</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.transform:</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            img <span class="op">=</span> <span class="va">self</span>.transform(img)</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.target_transform:</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            label <span class="op">=</span> <span class="va">self</span>.target_transform(label)</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> img, label</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The code above is a bit involved, so let’s walk through it.</p>
-<ul>
-<li><p><strong>__init__</strong> stores values that we pass in variables, and reads the labels file <code>annotations_file</code>.</p></li>
-<li><p><strong>__len__</strong> specifies the size of the dataset by returning the amount of labels.</p></li>
-</ul>
-<p><strong>__getitem__</strong> creates a path to an image. For example, if <code>img_dir='images'</code> and <code>idx=0</code>, then <code>img_path</code> is <code>images/tshirt1.jpg</code>. It then reads the image using a predefined PyTorch function, and reads the label. If any transformations are specified they are applied.</p>
-<p>We can now select images and labels from our dataset, much like we did earlier in <span class="citation" data-cites="selecting-img-label">@selecting-img-label</span></p>
-</section>
-<section id="how-to-use-the-pytorch-dataloader-class" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-the-pytorch-dataloader-class">How to use the PyTorch DataLoader class</h2>
-<p>In the code above we only specified how to return a single (image, label) pair. In practice, we typically use lots of images and labels (called batches) for per training step. Additionally, we want to shuffle data (to prevent overfitting) and we want to speed up the process using multiprocessing. This is where the DataLoader class steps in. Let’s use the DataLoader to retrieve 64 images at once.</p>
-<div id="f553a5ad" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>train_dataloader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>test_dataloader <span class="op">=</span> DataLoader(test_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data for one simulated training step</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>train_image_features, train_labels <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Remember that these images are the data used for one training step. Let’s see the batch of images that our dataloader just sent us.</p>
-<div id="4e623f98" class="cell" data-execution_count="12">
-<details class="code-fold">
-<summary>Show visualization code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>figure <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cols, rows <span class="op">=</span> <span class="dv">8</span>, <span class="dv">8</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(cols <span class="op">*</span> rows):</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> i</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> train_image_features[idx]</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    figure.add_subplot(rows, cols, i <span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    plt.imshow(img.squeeze(), cmap<span class="op">=</span><span class="st">"gray"</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    plt.title(training_data.classes[train_labels[idx]], pad<span class="op">=</span><span class="dv">1</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-13-output-1.png" width="621" height="624" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>That’s a lot of images! By using DataLoader, we have an easy way to retrieve lots of images from our data at once.</p>
-</section>
-<section id="different-ways-to-shuffle" class="level2">
-<h2 class="anchored" data-anchor-id="different-ways-to-shuffle">Different ways to shuffle</h2>
-<p>We can also control <em>how</em> data is shuffled (or in other words, the way that the random batch is sampled). We do this by setting the <code>sampler</code> parameter of the DataLoader. When doing this we have to set <code>shuffle=False</code>, since the shuffle parameter essentially sets the sampler parameter for us.</p>
-<div id="8e29352f" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data.sampler <span class="im">import</span> SequentialSampler, SubsetRandomSampler</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns images in order.</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The first batch will have the first 32 images, the second batch will have image 33-64, etc.</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>train_loader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">32</span>, sampler<span class="op">=</span>SequentialSampler(training_data))</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample randomly, only including the images 50-100.</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> np.arange(<span class="dv">50</span>, <span class="dv">101</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>train_loader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">32</span>, sampler<span class="op">=</span>SubsetRandomSampler(indices))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>These DataLoaders will select images in order of appearance in data, and randomly sample a subset of the data. Read about all the ways to sample in the <a href="https://docs.pytorch.org/docs/stable/data.html#data-loading-order-and-sampler">PyTorch documentation</a>.</p>
-<p><strong>To summarize:</strong> With Dataset and DataLoader, PyTorch makes it easy to manage data efficiently and flexibly. In future posts, we’ll explore how these tools integrate into full training loops.</p>
+<p>In this code, we specified that we want to convert our training data to a tensor using the <code>ToTensor</code> method, and the target label to a tensor using <code>our_own_transformation</code>.</p>
 </section>
 <section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p>PyTorch also offers ways to speed up sampling through multiprocessing and memory-pinning, which are both reasonably complicated and have some warnings attached to them, the latter being the reason that I did not include them in this post. If you are interested, or already know all about multiprocessing and GPU computations you can read about the topics <a href="https://docs.pytorch.org/docs/stable/data.html#multi-process-data-loading">here</a>. Thanks for reading all the way to the end, I hope to see you on day 3!</p>
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<p>There are many more things we can do with transforms. We can rotate images, shift images, or we can chain transformations together to create a preprocessing pipeline. Since those usecases are too advanced for us at the moment, I will not cover them in this post. However, if you are curious or already more experienced, I recommend that you check out the <a href="https://docs.pytorch.org/vision/stable/auto_examples/index.html#gallery">example section</a> on the Pytorch Website!</p>
 
 
 </section>

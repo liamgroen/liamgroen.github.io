@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="keywords" content="PyTorch, Learn PyTorch, PyTorch Basics">
-<meta name="description" content="PyTorch is a deep learning framework that is incredibly popular. But starting out with it might seem challenging or overwhelming. In this 100-day series I will follow along with the PyTorch tutorial series, curating the things I learned, and giving my beginner opinion.">
+<meta name="description" content="PyTorch is a deep learning framework that is incredibly popular. But starting out with it might seem challenging or overwhelming. In this series I will follow along with the PyTorch tutorial series, curating the things I learned, and giving my beginner opinion.">
 
-<title>100 Days Of PyTorch – Liam's Learning</title>
+<title>PyTorch Basics – Liam's Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,9 +41,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -151,9 +151,9 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="100 Days Of PyTorch">
-<meta property="og:description" content="PyTorch is a deep learning framework that is incredibly popular. But starting out with it might seem challenging or overwhelming. Luckily, the team behind PyTorch has a great tutorial series which covers concepts all the way from ‘what is a tensor’ to ‘deploying a model to production’. In this 100-day series I will follow along with the PyTorch tutorial series, curating the things I learned, and giving my beginner opinion.">
-<meta property="og:image" content="https://liamgroen.nl/posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/thumbnail.png">
+<meta property="og:title" content="PyTorch Basics">
+<meta property="og:description" content="PyTorch is a deep learning framework that is incredibly popular. But starting out with it might seem challenging or overwhelming. Luckily, the team behind PyTorch has a great tutorial series which covers concepts all the way from ‘what is a tensor’ to ‘deploying a model to production’. In this 6-day series I will follow along with the PyTorch tutorial series, curating the things I learned, and giving my beginner opinion.">
+<meta property="og:image" content="https://liamgroen.nl/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/thumbnail.png">
 <meta property="og:site_name" content="Liam's Learning">
 <meta property="og:image:height" content="1200">
 <meta property="og:image:width" content="1200">
@@ -337,8 +337,6 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
@@ -350,8 +348,8 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./100-days-of-pytorch.html" aria-current="page"> 
-<span class="menu-text">100 Days Of PyTorch</span></a>
+    <a class="nav-link active" href="./pytorch-basics.html" aria-current="page"> 
+<span class="menu-text">PyTorch Basics</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./posts.html"> 
@@ -380,10 +378,10 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">100 Days Of PyTorch</h1>
+      <h1 class="title">PyTorch Basics</h1>
                   <div>
         <div class="description">
-          PyTorch is a deep learning framework that is incredibly popular. But starting out with it might seem challenging or overwhelming. Luckily, the team behind PyTorch has a great <a href="https://docs.pytorch.org/tutorials/">tutorial series</a> which covers concepts all the way from ‘what is a tensor’ to ‘deploying a model to production’. In this 100-day series I will follow along with the PyTorch tutorial series, curating the things I learned, and giving my beginner opinion.
+          PyTorch is a deep learning framework that is incredibly popular. But starting out with it might seem challenging or overwhelming. Luckily, the team behind PyTorch has a great <a href="https://docs.pytorch.org/tutorials/">tutorial series</a> which covers concepts all the way from ‘what is a tensor’ to ‘deploying a model to production’. In this 6-day series I will follow along with the PyTorch tutorial series, curating the things I learned, and giving my beginner opinion.
         </div>
       </div>
                 </div>
@@ -444,22 +442,22 @@ window.Quarto = {
   </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1747094400000" data-listing-file-modified-sort="1762704360730" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1597">
-<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1747094400000" data-listing-file-modified-sort="1766235664796" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1597">
+<div class="thumbnail"><a href="./posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/thumbnail.png" class="thumbnail-image">
+<img loading="lazy" src="./posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/thumbnail.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">Day 6: PyTorch Basics - Deploying Model to HuggingFace Spaces With Gradio and ONNX</a>
+<a href="./posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">Day 6: PyTorch Basics - Deploying Model to HuggingFace Spaces With Gradio and ONNX</a>
 </h3>
-<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">
 <p>Deploying your model might seem like a daunting task, and in some cases, it certainly is. But it is arguably one of the most import things to learn, since a model that never makes it out of your local machine is not useful to anybody. In this post we learn how to convert a trained model to the ONNX format, and deploy it permanently on HuggingFace for free with Gradio.</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">
+<a href="./posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html" class="no-external">
 <div class="listing-date">
 May 13, 2025
 </div>
@@ -469,22 +467,22 @@ Liam Groen
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1747008000000" data-listing-file-modified-sort="1762704360706" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1547">
-<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-5-save-and-load-model/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="1" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1747008000000" data-listing-file-modified-sort="1766235664758" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1547">
+<div class="thumbnail"><a href="./posts/pytorch-basics/day-5-save-and-load-model/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/100-days-of-pytorch/day-5-save-and-load-model/thumbnail.jpg" class="thumbnail-image">
+<img loading="lazy" src="./posts/pytorch-basics/day-5-save-and-load-model/thumbnail.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/100-days-of-pytorch/day-5-save-and-load-model/index.html" class="no-external">Day 5: PyTorch Basics - Saving and Loading Models</a>
+<a href="./posts/pytorch-basics/day-5-save-and-load-model/index.html" class="no-external">Day 5: PyTorch Basics - Saving and Loading Models</a>
 </h3>
-<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-5-save-and-load-model/index.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/pytorch-basics/day-5-save-and-load-model/index.html" class="no-external">
 <p>Previously, we learned how to train a neural network model. But how do we actually make predictions with it? And how can we use open-source models that other people trained? In this post we learn how to store and load the weights that the model learned during training, and how to use open-source models and weights</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/100-days-of-pytorch/day-5-save-and-load-model/index.html" class="no-external">
+<a href="./posts/pytorch-basics/day-5-save-and-load-model/index.html" class="no-external">
 <div class="listing-date">
 May 12, 2025
 </div>
@@ -494,22 +492,22 @@ Liam Groen
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746921600000" data-listing-file-modified-sort="1762704360431" data-listing-date-modified-sort="1747008000000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1535">
-<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="2" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746921600000" data-listing-file-modified-sort="1766235664449" data-listing-date-modified-sort="1747008000000" data-listing-reading-time-sort="8" data-listing-word-count-sort="1535">
+<div class="thumbnail"><a href="./posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html" class="no-external">
 
-<p class="card-img-top"><img src="posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index_files/figure-html/cell-7-output-1.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="posts/pytorch-basics/day-4-building-and-training-a-neural-network/index_files/figure-html/cell-7-output-1.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html" class="no-external">Day 4 - PyTorch Basics: Building and Training a Neural Network</a>
+<a href="./posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html" class="no-external">Day 4 - PyTorch Basics: Building and Training a Neural Network</a>
 </h3>
-<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html" class="no-external">
 <p>Learn how to use <code>torch.nn</code> to build the neural network structure, and how to train the model to recognize images, using a training and evaluation loop. It assumes you are already familiar with the theory behind neural networks (i.e loss functions, gradient descent).</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html" class="no-external">
+<a href="./posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html" class="no-external">
 <div class="listing-date">
 May 11, 2025
 </div>
@@ -519,22 +517,22 @@ Liam Groen
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746835200000" data-listing-file-modified-sort="1762704360431" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="344">
-<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-3-transforms/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="3" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746835200000" data-listing-file-modified-sort="1766235664448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="344">
+<div class="thumbnail"><a href="./posts/pytorch-basics/day-3-transforms/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/100-days-of-pytorch/day-3-transforms/TransformManyVectors.svg" class="thumbnail-image">
+<img loading="lazy" src="./posts/pytorch-basics/day-3-transforms/TransformManyVectors.svg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/100-days-of-pytorch/day-3-transforms/index.html" class="no-external">Day 3: Pytorch Basics - Transforms</a>
+<a href="./posts/pytorch-basics/day-3-transforms/index.html" class="no-external">Day 3: Pytorch Basics - Transforms</a>
 </h3>
-<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-3-transforms/index.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/pytorch-basics/day-3-transforms/index.html" class="no-external">
 Data comes in many different formats. On the other hand, PyTorch can only do machine learning with one data type, the tensor. Transforms can convert any data to a tensor. In…
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/100-days-of-pytorch/day-3-transforms/index.html" class="no-external">
+<a href="./posts/pytorch-basics/day-3-transforms/index.html" class="no-external">
 <div class="listing-date">
 May 10, 2025
 </div>
@@ -544,22 +542,22 @@ Liam Groen
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746748800000" data-listing-file-modified-sort="1762704360153" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1188">
-<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="4" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746748800000" data-listing-file-modified-sort="1766235664151" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1188">
+<div class="thumbnail"><a href="./posts/pytorch-basics/day-2-datasets-dataloaders/index.html" class="no-external">
 
-<p class="card-img-top"><img src="posts/100-days-of-pytorch/day-2-datasets-dataloaders/index_files/figure-html/cell-8-output-1.png"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="posts/pytorch-basics/day-2-datasets-dataloaders/index_files/figure-html/cell-8-output-1.png"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">Day 2: PyTorch Basics - Dataset and DataLoader</a>
+<a href="./posts/pytorch-basics/day-2-datasets-dataloaders/index.html" class="no-external">Day 2: PyTorch Basics - Dataset and DataLoader</a>
 </h3>
-<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/pytorch-basics/day-2-datasets-dataloaders/index.html" class="no-external">
 <p>In this post we learn about how to download datasets with PyTorch Datasets, and how to retrieve data from them for training an ML model while keeping data and model separate. We will see that working with these classes is pretty easy, and allows us to use all kinds of handy built-in methods.</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html" class="no-external">
+<a href="./posts/pytorch-basics/day-2-datasets-dataloaders/index.html" class="no-external">
 <div class="listing-date">
 May 9, 2025
 </div>
@@ -569,22 +567,22 @@ Liam Groen
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746662400000" data-listing-file-modified-sort="1762704359872" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="740">
-<div class="thumbnail"><a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
+<div class="quarto-post image-right" data-index="5" data-categories="MTAwJTIwRGF5cyUyME9mJTIwUHlUb3JjaA==" data-listing-date-sort="1746662400000" data-listing-file-modified-sort="1766235663846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="740">
+<div class="thumbnail"><a href="./posts/pytorch-basics/day-1-tensors/index.html" class="no-external">
 
-<img loading="lazy" src="./posts/100-days-of-pytorch/day-1-tensors/images/preview.png" class="thumbnail-image">
+<img loading="lazy" src="./posts/pytorch-basics/day-1-tensors/images/preview.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">Day 1: Pytorch Basics - Tensors</a>
+<a href="./posts/pytorch-basics/day-1-tensors/index.html" class="no-external">Day 1: Pytorch Basics - Tensors</a>
 </h3>
-<div class="delink listing-description"><a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/pytorch-basics/day-1-tensors/index.html" class="no-external">
 <p>Tensors lie at the heart of PyTorch. If we want to be proficient in PyTorch, we need to know what we can do with the <code>Tensor</code> object. There are over 1200 possible operations to perform on tensors, but only a few are needed to get started with PyTorch. In this post we learn what a Tensor is and how to perform basic operations with them. Familiarity with python programming is assumed.</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/100-days-of-pytorch/day-1-tensors/index.html" class="no-external">
+<a href="./posts/pytorch-basics/day-1-tensors/index.html" class="no-external">
 <div class="listing-date">
 May 8, 2025
 </div>

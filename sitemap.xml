@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://liamgroen.nl/posts.html</loc>
-    <lastmod>2025-11-09T16:05:59.861Z</lastmod>
+    <lastmod>2025-12-20T13:01:03.801Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/100-days-of-pytorch.html</loc>
-    <lastmod>2025-11-09T16:05:59.854Z</lastmod>
+    <loc>https://liamgroen.nl/pytorch-basics.html</loc>
+    <lastmod>2025-12-20T13:01:04.804Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-5-save-and-load-model/index.html</loc>
-    <lastmod>2025-11-09T16:06:00.706Z</lastmod>
+    <loc>https://liamgroen.nl/posts/pytorch-basics/day-5-save-and-load-model/index.html</loc>
+    <lastmod>2025-12-20T13:01:04.758Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html</loc>
-    <lastmod>2025-11-09T16:06:00.153Z</lastmod>
+    <loc>https://liamgroen.nl/posts/pytorch-basics/day-2-datasets-dataloaders/index.html</loc>
+    <lastmod>2025-12-20T13:01:04.151Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-1-tensors/index.html</loc>
-    <lastmod>2025-11-09T16:05:59.872Z</lastmod>
-  </url>
-  <url>
-    <loc>https://liamgroen.nl/index.html</loc>
-    <lastmod>2025-11-09T16:05:59.857Z</lastmod>
+    <loc>https://liamgroen.nl/posts/pytorch-basics/day-1-tensors/index.html</loc>
+    <lastmod>2025-12-20T13:01:03.846Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/backpropagation/index.html</loc>
-    <lastmod>2025-11-09T16:06:00.749Z</lastmod>
+    <lastmod>2025-12-20T13:01:03.823Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-3-transforms/index.html</loc>
-    <lastmod>2025-11-09T16:06:00.431Z</lastmod>
+    <loc>https://liamgroen.nl/index.html</loc>
+    <lastmod>2025-12-20T13:01:03.796Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html</loc>
-    <lastmod>2025-11-09T16:06:00.730Z</lastmod>
+    <loc>https://liamgroen.nl/posts/linear-regression/index.html</loc>
+    <lastmod>2025-12-20T13:01:03.835Z</lastmod>
   </url>
   <url>
-    <loc>https://liamgroen.nl/posts/100-days-of-pytorch/day-4-building-and-training-a-neural-network/index.html</loc>
-    <lastmod>2025-11-09T16:06:00.431Z</lastmod>
+    <loc>https://liamgroen.nl/posts/pytorch-basics/day-3-transforms/index.html</loc>
+    <lastmod>2025-12-20T13:01:04.448Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liamgroen.nl/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html</loc>
+    <lastmod>2025-12-20T13:01:04.796Z</lastmod>
+  </url>
+  <url>
+    <loc>https://liamgroen.nl/posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html</loc>
+    <lastmod>2025-12-20T13:01:04.449Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/about.html</loc>
-    <lastmod>2025-11-09T16:05:59.857Z</lastmod>
+    <lastmod>2025-12-20T13:01:03.796Z</lastmod>
   </url>
 </urlset>

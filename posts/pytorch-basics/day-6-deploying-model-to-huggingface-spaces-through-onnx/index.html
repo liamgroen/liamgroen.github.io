@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Liam Groen">
-<meta name="dcterms.date" content="2025-05-10">
-<meta name="keywords" content="Transforms, ToTensor, PyTorch ToTensor, PyTorch transforms">
-<meta name="description" content="In this post, we will learn how to transform images using the built-in <code>ToTensor</code> method. We will also learn how to create and use a custom transform that we define ourselves">
+<meta name="dcterms.date" content="2025-05-13">
+<meta name="keywords" content="ONNX, HuggingFace, HuggingFace Spaces, Deploy Model, Gradio">
+<meta name="description" content="Learn how to convert a trained model to the ONNX format, and deploy it permanently on HuggingFace for free with Gradio.">
 
-<title>Pytorch Basics - Transforms – Liam's Learning</title>
+<title>PyTorch Basics - Deploying Model to HuggingFace Spaces Through Gradio and ONNX – Liam's Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,9 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -128,10 +128,12 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Pytorch Basics - Transforms">
-<meta property="og:description" content="Posts about machine learning, deep learning, math and coding.">
-<meta property="og:image" content="https://liamgroen.nl/posts/100-days-of-pytorch/day-3-transforms/TransformManyVectors.svg">
+<meta property="og:title" content="PyTorch Basics - Deploying Model to HuggingFace Spaces Through Gradio and ONNX">
+<meta property="og:description" content="Deploying your model might seem like a daunting task, and in some cases, it certainly is. But it is arguably one of the most import things to learn, since a model that never makes it out of your local machine is not useful to anybody. In this post we learn how to convert a trained model to the ONNX format, and deploy it permanently on HuggingFace for free with Gradio.">
+<meta property="og:image" content="https://liamgroen.nl/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/thumbnail.png">
 <meta property="og:site_name" content="Liam's Learning">
+<meta property="og:image:height" content="1200">
+<meta property="og:image:width" content="1200">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -312,8 +314,6 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
@@ -325,8 +325,8 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../100-days-of-pytorch.html"> 
-<span class="menu-text">100 Days Of PyTorch</span></a>
+    <a class="nav-link" href="../../../pytorch-basics.html"> 
+<span class="menu-text">PyTorch Basics</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../../posts.html"> 
@@ -355,8 +355,13 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Day 3: Pytorch Basics - Transforms</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">Day 6: PyTorch Basics - Deploying Model to HuggingFace Spaces With Gradio and ONNX</h1>
+                  <div>
+        <div class="description">
+          Deploying your model might seem like a daunting task, and in some cases, it certainly is. But it is arguably one of the most import things to learn, since a model that never makes it out of your local machine is not useful to anybody. In this post we learn how to convert a trained model to the ONNX format, and deploy it permanently on HuggingFace for free with Gradio.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">100 Days Of PyTorch</div>
               </div>
                   </div>
@@ -375,7 +380,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 10, 2025</p>
+        <p class="date">May 13, 2025</p>
       </div>
     </div>
     
@@ -386,7 +391,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
   <div>
     <div class="keywords">
       <div class="block-title">Keywords</div>
-      <p>Transforms, ToTensor, PyTorch ToTensor, PyTorch transforms</p>
+      <p>ONNX, HuggingFace, HuggingFace Spaces, Deploy Model, Gradio</p>
     </div>
   </div>
   
@@ -398,9 +403,13 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-do-we-need-transform" id="toc-why-do-we-need-transform" class="nav-link active" data-scroll-target="#why-do-we-need-transform">Why do we need transform?</a></li>
-  <li><a href="#how-do-pytorch-transforms-work" id="toc-how-do-pytorch-transforms-work" class="nav-link" data-scroll-target="#how-do-pytorch-transforms-work">How do PyTorch transforms work?</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  <li><a href="#what-is-onnx" id="toc-what-is-onnx" class="nav-link active" data-scroll-target="#what-is-onnx">What is ONNX?</a></li>
+  <li><a href="#converting-to-onnx" id="toc-converting-to-onnx" class="nav-link" data-scroll-target="#converting-to-onnx">Converting to ONNX</a></li>
+  <li><a href="#running-the-onnx-model" id="toc-running-the-onnx-model" class="nav-link" data-scroll-target="#running-the-onnx-model">Running The ONNX Model</a></li>
+  <li><a href="#sanity-checking-output" id="toc-sanity-checking-output" class="nav-link" data-scroll-target="#sanity-checking-output">Sanity Checking Output</a></li>
+  <li><a href="#how-to-get-onnx-predicted-labels" id="toc-how-to-get-onnx-predicted-labels" class="nav-link" data-scroll-target="#how-to-get-onnx-predicted-labels">How To Get ONNX predicted labels?</a></li>
+  <li><a href="#deploying-onnx-models" id="toc-deploying-onnx-models" class="nav-link" data-scroll-target="#deploying-onnx-models">Deploying ONNX models</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
     </div>
@@ -412,55 +421,199 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 
 
 
-<section id="why-do-we-need-transform" class="level2">
-<h2 class="anchored" data-anchor-id="why-do-we-need-transform">Why do we need transform?</h2>
-<p>Data comes in many different formats. On the other hand, PyTorch can only do machine learning with one data type, the tensor. Transforms can convert any data to a tensor. In this post, we will look at how to transform images. I will assume that you are familiar with PyTorch Datasets. If you are not, I recommend reading <a href="../../../posts/100-days-of-pytorch/day-2-datasets-dataloaders/index.html">this post</a> before you continue.</p>
+<p>At the end of this tutorial, we will have a running deployment of an ONNX model on Hugging Face Spaces: <iframe src="https://liamgroen-onnx-demo.hf.space/" frameborder="0" width="100%" height="600px" style="min-width:400px;"></iframe></p>
+<section id="what-is-onnx" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-onnx">What is ONNX?</h2>
+<p>There exist many different deep learning frameworks, across many different programming language. <a href="https://onnx.ai/">ONNX</a> is a standard that defines a common set of building blocks and file format so that no matter what technology is used to train a model, when it is rendered to ONNX, it can be deployed <a href="https://onnx.ai/supported-tools.html#deployModel">virtually anywhere</a>.</p>
 </section>
-<section id="how-do-pytorch-transforms-work" class="level2">
-<h2 class="anchored" data-anchor-id="how-do-pytorch-transforms-work">How do PyTorch transforms work?</h2>
-<p>All built-in datasets from the torchvision module take the parameters <code>transform</code> and <code>target_tranform</code>. They take in a function that transforms input data into a tensor, following predefined steps. To avoid having to write these functions ourselves, the <code>torchvision.transforms</code> module come with an image-to-tensor transform, called <code>ToTensor</code> out of the box.</p>
-<p>Let’s see an example through the FashionMNIST dataset.</p>
-<div id="66f2ae1d" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.datasets <span class="im">import</span> FashionMNIST</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> ToTensor, Lambda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="converting-to-onnx" class="level2">
+<h2 class="anchored" data-anchor-id="converting-to-onnx">Converting to ONNX</h2>
+<p>In this section I assume that you have a trained model called <code>torch_model</code>. If you don’t have one, or don’t know how to train your own model yet, <a href="../../../posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html">this post</a> explains how to build and train your own model.</p>
+<p>Let’s export our model to ONNX format. Since <code>onnx.export</code> runs the model, we need to supply an example input. Furthermore If we don’t want the batch size to be stationary, we need to set the <code>dynamic_axes</code> parameter.</p>
+<div id="bb97faa2" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">1</span> <span class="co"># Random batch size</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>example_inputs <span class="op">=</span> torch.rand((batch_size, <span class="dv">28</span>, <span class="dv">28</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>onnx_program <span class="op">=</span> torch.onnx.export(torch_model,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                 example_inputs,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                                 input_names<span class="op">=</span>[<span class="st">'input'</span>],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                                 output_names<span class="op">=</span>[<span class="st">'output'</span>],</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                                 dynamic_axes <span class="op">=</span> { <span class="co"># variable input/output: first dimension, corresponding to batch size</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">'input'</span> : {<span class="dv">0</span> : <span class="st">'batch_size'</span>}, </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">'output'</span> : {<span class="dv">0</span> : <span class="st">'batch_size'</span>}</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                                     },</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                                 f<span class="op">=</span><span class="st">"converted_model.onnx"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                                 export_params<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                                 do_constant_folding<span class="op">=</span><span class="va">True</span> <span class="co"># Optimization</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                                 )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fb79c4b4" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> our_own_transformation(target):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Transformes target label to a one-hot tensor</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    example:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; our_own_transformation(3)</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; torch.tensor([0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0])</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    zeros_list <span class="op">=</span> torch.zeros(<span class="dv">10</span>, dtype<span class="op">=</span>torch.<span class="bu">float</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    one_hot_index <span class="op">=</span> torch.tensor(target)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    one_hot_tensor <span class="op">=</span> zeros_list.scatter_(<span class="dv">0</span>, one_hot_index, value<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> one_hot_tensor</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ds_train <span class="op">=</span> FashionMNIST(</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ToTensor(),</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    target_transform<span class="op">=</span>Lambda(our_own_transformation)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>ds_test <span class="op">=</span> FashionMNIST(</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>ToTensor(),</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    target_transform<span class="op">=</span>Lambda(our_own_transformation)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="running-the-onnx-model" class="level2">
+<h2 class="anchored" data-anchor-id="running-the-onnx-model">Running The ONNX Model</h2>
+<p>We can run <em>any</em> ONNX model inside python, using the <code>onnxruntime</code> package. Let’s run our own model that we just exported by downloading it from <code>converted_model.onnx</code>.</p>
+<div id="e1e2b0a6" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnx</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> onnx.load(<span class="st">"converted_model.onnx"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>onnx.checker.check_model(model) <span class="co"># If this does not raise an error, we can continue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>In this code, we specified that we want to convert our training data to a tensor using the <code>ToTensor</code> method, and the target label to a tensor using <code>our_own_transformation</code>.</p>
+<p>Since ONNX does not support all data types that PyTorch uses, we need to do a bit of pre-processing before we can actually run the model.</p>
+<div id="0283a8cb" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnxruntime <span class="im">as</span> ort</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a 'session', which will run the model</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ort_session <span class="op">=</span> ort.InferenceSession(<span class="st">"converted_model.onnx"</span>, providers<span class="op">=</span>[<span class="st">"CPUExecutionProvider"</span>])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The function that will convert PyTorch inputs to ONNX inputs</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_numpy(tensor):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tensor.detach().cpu().numpy() <span class="cf">if</span> tensor.requires_grad <span class="cf">else</span> tensor.cpu().numpy()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample image </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> datasets.FashionMNIST(</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    download<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    transform<span class="op">=</span>transforms.ToTensor()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>train_dataloader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader))</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>testing_image <span class="op">=</span> X[<span class="dv">0</span>]</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>testing_image_label <span class="op">=</span> y[<span class="dv">0</span>]</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>input_name <span class="op">=</span> ort_session.get_inputs()[<span class="dv">0</span>].name <span class="co">#  We specified this in our onnx_program's input_names parameter</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>input_values <span class="op">=</span> to_numpy(testing_image)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>ort_inputs <span class="op">=</span> {input_name: input_values}</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>ort_outputs <span class="op">=</span> ort_session.run(<span class="va">None</span>, ort_inputs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I specified <code>None</code> for the output_names parameter of the <code>.run()</code> method. This computes all outputs. If we had specific outputs defined in <code>onnx_program</code>’s <code>output_names</code>, we could pass them here in a list. In this case, running <code>.run(output_names=['output'])</code> would result in the same output.</p>
+</div>
+</div>
+</section>
+<section id="sanity-checking-output" class="level2">
+<h2 class="anchored" data-anchor-id="sanity-checking-output">Sanity Checking Output</h2>
+<p>Using ONNX comes with the advantage of a standardized model format which we can run anywhere, but it still needs to give the same output as the model that we trained using PyTorch. Let’s make sure that nothing went wrong during conversion by comparing the PyTorch model output and the ONNX model output on the same input:</p>
+<div id="2ca79065" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>torch_outputs <span class="op">=</span> torch_model(testing_image)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>torch_outputs <span class="op">=</span> to_numpy(torch_outputs)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>np.testing.assert_allclose(ort_outputs[<span class="dv">0</span>], torch_outputs, rtol<span class="op">=</span><span class="fl">1e-03</span>, atol<span class="op">=</span><span class="fl">1e-05</span>) <span class="co"># No error: good to go!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="how-to-get-onnx-predicted-labels" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-get-onnx-predicted-labels">How To Get ONNX predicted labels?</h2>
+<p>We can get the labels back by using <code>np.argmax</code>:</p>
+<div id="66f72fd5" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idx_to_class <span class="op">=</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>: <span class="st">'T-shirt/top'</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">'Trouser'</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="st">'Pullover'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: <span class="st">'Dress'</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">4</span>: <span class="st">'Coat'</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>: <span class="st">'Sandal'</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">6</span>: <span class="st">'Shirt'</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">7</span>: <span class="st">'Sneaker'</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dv">8</span>: <span class="st">'Bag'</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">9</span>: <span class="st">'Ankle boot'</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>label_index <span class="op">=</span> np.argmax(ort_outputs[<span class="dv">0</span>], axis<span class="op">=</span><span class="dv">1</span>).item()</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>class_label <span class="op">=</span> idx_to_class[label_index]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When using a pre-trained model from torchvision.models, we can retrieve the class label through <code>weights.meta["categories"]</code>. E.g <code>ResNet50_Weights.meta["categories"][label_index]</code></p>
+</div>
+</div>
+</section>
+<section id="deploying-onnx-models" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-onnx-models">Deploying ONNX models</h2>
+<p>In this section we will deploy our model to <a href="">HuggingFace Spaces</a></p>
+<p>For demonstration purposes I will be using a <a href="https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.resnet50.html">ResNet-50</a> with default weights, saved as a ‘.onnx’ file.</p>
+<p>Follow these steps to get started:</p>
+<ol type="1">
+<li><h3 id="create-an-account" class="anchored">Create an account</h3>
+<p>Create an account at <a href="https://huggingface.co/login">Hugging Face</a> if you don’t have one.</p></li>
+<li><h3 id="create-a-new-space" class="anchored">Create a new space</h3>
+<p>Create a new space and select ‘Gradio’ as the Space SDK. Gradio is a high-level API that generates a UI for machine learning models with very few code. After a bit of waiting you are able to clone the repository to your local machine.</p></li>
+<li><h3 id="generate-a-password-for-the-space" class="anchored">Generate a password for the Space</h3>
+<p>Go to Settings &gt; Access tokens, and scroll down to ‘Repositories permissions’. Select your space and click the write permissions.</p></li>
+<li><h3 id="push-the-app" class="anchored">Push the app</h3>
+<p>We only need to specify 2 functions to create a UI and do inference. The <code>predict</code> function, and a preprocessing function. The last depends on the model that you are using. PyTorch pre-trained models also have their required preprocessing made available through <code>{weights_name.VERSION}.transforms()</code>:</p></li>
+</ol>
+<div id="9c7f9ff5" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Show imports</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnxruntime <span class="im">as</span> ort</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> gradio <span class="im">as</span> gr</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> ResNet50_Weights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="ade069b6" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> ResNet50_Weights.DEFAULT</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>preprocess <span class="op">=</span> weights.transforms() <span class="co"># Necessary input transformations</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ort_session <span class="op">=</span> ort.InferenceSession(<span class="st">"resnet50.onnx"</span>, providers<span class="op">=</span>[<span class="st">"CPUExecutionProvider"</span>])</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_inputs(img: Image):</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> preprocess(img) <span class="co"># Change this line when using a different model</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    img_array <span class="op">=</span> np.array(img).astype(np.float32)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    img_array <span class="op">=</span> np.expand_dims(img_array, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> img_array</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(img):</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> preprocess_inputs(img)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    ort_inputs <span class="op">=</span> {ort_session.get_inputs()[<span class="dv">0</span>].name: img}</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    ort_outputs <span class="op">=</span> ort_session.run(<span class="va">None</span>, ort_inputs)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    label_index <span class="op">=</span> np.argmax(ort_outputs[<span class="dv">0</span>], axis<span class="op">=</span><span class="dv">1</span>).item()</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    predicted_label <span class="op">=</span> weights.meta[<span class="st">"categories"</span>][label_index]</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> predicted_label</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>That’s it! Now we can build the interface:</p>
+<div id="c0b49c6b" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>demo <span class="op">=</span> gr.Interface(predict, gr.Image(<span class="bu">type</span><span class="op">=</span><span class="st">"pil"</span>, image_mode<span class="op">=</span><span class="st">"RGB"</span>), gr.Label())</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>demo.launch()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Your file structure should look like this:</p>
+<div id="ffe24641" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-stdout">
+<pre><code>.
+├── README.md
+├── app.py
+├── requirements.txt
+└── resnet50.onnx</code></pre>
+</div>
+</div>
+<p>When all the code is in <code>app.py</code> and your project dependencies (imports) are listed in <code>requirements.txt</code> you are ready to push and deploy by running <code>git push</code>. If you encounter an error, you will need to <a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage">install git-lfs</a></p>
 </section>
 <section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
-<p>There are many more things we can do with transforms. We can rotate images, shift images, or we can chain transformations together to create a preprocessing pipeline. Since those usecases are too advanced for us at the moment, I will not cover them in this post. However, if you are curious or already more experienced, I recommend that you check out the <a href="https://docs.pytorch.org/vision/stable/auto_examples/index.html#gallery">example section</a> on the Pytorch Website!</p>
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://www.gradio.app/guides/quickstart">Official Gradio Quickstart</a></li>
+</ul>
 
 
 </section>

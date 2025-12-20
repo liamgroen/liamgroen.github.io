@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Liam Groen">
 <meta name="dcterms.date" content="2025-05-08">
 <meta name="keywords" content="Tensor">
-<meta name="description" content="There are over 1200 possible operations to perform on tensors, but only a few are needed to get started with PyTorch. In this post we learn what a Tensor is and how to perform basic operations with them. We learn how to create a tensor with PyTorch, how to mutate a tensor, how to index a tensor, how to compare tensors, and what tensor methods exist.">
+<meta name="description" content="Do you ever wonder how to predict a person’s height based on their shoe size? Or how a line of best fit through data is found? This post covers how to use linear regression for prediction and">
 
-<title>Pytorch Basics - Tensors – Liam's Learning</title>
+<title>Machine Learning Basics - Linear Regression – Liam's Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,66 +24,31 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -126,14 +91,43 @@ gtag('js', new Date());
 gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Pytorch Basics - Tensors">
-<meta property="og:description" content="Tensors lie at the heart of PyTorch. If we want to be proficient in PyTorch, we need to know what we can do with the Tensor object. There are over 1200 possible operations to perform on tensors, but only a few are needed to get started with PyTorch. In this post we learn what a Tensor is and how to perform basic operations with them. Familiarity with python programming is assumed.">
-<meta property="og:image" content="https://liamgroen.nl/posts/100-days-of-pytorch/day-1-tensors/images/preview.png">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Machine Learning Basics - Linear Regression">
+<meta property="og:description" content="Do you ever wonder how to predict a person’s height based on their shoe size? Or how a line of best fit through data is found? This post covers how to use linear regression for prediction and">
+<meta property="og:image" content="https://liamgroen.nl/posts/linear-regression/images/preview.png">
 <meta property="og:site_name" content="Liam's Learning">
-<meta property="og:image:height" content="905">
-<meta property="og:image:width" content="1005">
+<meta property="og:image:height" content="675">
+<meta property="og:image:width" content="850">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -314,9 +308,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
   </div>
@@ -327,17 +319,17 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../100-days-of-pytorch.html"> 
-<span class="menu-text">100 Days Of PyTorch</span></a>
+    <a class="nav-link" href="../../pytorch-basics.html"> 
+<span class="menu-text">PyTorch Basics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -357,16 +349,13 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Day 1: Pytorch Basics - Tensors</h1>
+      <h1 class="title">Machine Learning Basics - Linear Regression</h1>
                   <div>
         <div class="description">
-          Tensors lie at the heart of PyTorch. If we want to be proficient in PyTorch, we need to know what we can do with the <code>Tensor</code> object. There are over 1200 possible operations to perform on tensors, but only a few are needed to get started with PyTorch. In this post we learn what a Tensor is and how to perform basic operations with them. Familiarity with python programming is assumed.
+          Do you ever wonder how to predict a person’s height based on their shoe size? Or how a line of best fit through data is found? This post covers how to use linear regression for prediction and
         </div>
       </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">100 Days Of PyTorch</div>
-              </div>
-                  </div>
+                </div>
   </div>
     
   
@@ -405,13 +394,10 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-a-tensor" id="toc-what-is-a-tensor" class="nav-link active" data-scroll-target="#what-is-a-tensor">What is a tensor?</a></li>
-  <li><a href="#how-to-create-a-tensor" id="toc-how-to-create-a-tensor" class="nav-link" data-scroll-target="#how-to-create-a-tensor">How to create a tensor?</a></li>
-  <li><a href="#how-to-do-math-with-tensors" id="toc-how-to-do-math-with-tensors" class="nav-link" data-scroll-target="#how-to-do-math-with-tensors">How to do math with tensors?</a></li>
-  <li><a href="#some-built-in-tensor-methods" id="toc-some-built-in-tensor-methods" class="nav-link" data-scroll-target="#some-built-in-tensor-methods">Some built-in tensor methods</a>
-  <ul class="collapse">
-  <li><a href="#random-numbers" id="toc-random-numbers" class="nav-link" data-scroll-target="#random-numbers">Random numbers</a></li>
-  </ul></li>
+  <li><a href="#what-is-linear-regression" id="toc-what-is-linear-regression" class="nav-link active" data-scroll-target="#what-is-linear-regression">What is linear regression?</a></li>
+  <li><a href="#how-to-find-the-optimal-linear-regression-weights" id="toc-how-to-find-the-optimal-linear-regression-weights" class="nav-link" data-scroll-target="#how-to-find-the-optimal-linear-regression-weights">How to find the optimal linear regression weights?</a></li>
+  <li><a href="#how-to-make-predictions-using-the-optimal-weights" id="toc-how-to-make-predictions-using-the-optimal-weights" class="nav-link" data-scroll-target="#how-to-make-predictions-using-the-optimal-weights">How to make predictions using the optimal weights?</a></li>
+  <li><a href="#what-next" id="toc-what-next" class="nav-link" data-scroll-target="#what-next">What next?</a></li>
   </ul>
 </nav>
     </div>
@@ -423,315 +409,109 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 
 
 
-<section id="what-is-a-tensor" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-tensor">What is a tensor?</h2>
-<p>If you are familiar with math, it might help to think about a tensor as an n-dimensional matrix. If you are not familiar with math, or just want a better explanation, you can think of a tensor as a collection of structured numbers that we can do <em>quick math</em> with. A tensor has two properties: shape, and dimension. <em>Shape</em> means how many numbers the tensor has along each axis. <em>Dimension</em> means the amount of axes that the tensor has. In the picture below, the dimension corresponds with the number of colored arrows, and the shape is denoted below the tensor.</p>
+<section id="what-is-linear-regression" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-linear-regression">What is linear regression?</h2>
+<p>In this post I will be taking you through the basics of a fundamental machine learning problem: regression.</p>
+<p>Let’s say we want to predict a person’s height, based on their shoe size. To tackle the task, we are going to use linear regression. The first thing we will need is data on people’s shoe size and their corresponding height.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/tensor.png" class="img-fluid figure-img"></p>
-<figcaption>A vector (1D), a matrix (2D) and a 3 dimensional tensor (3D) are all tensors.</figcaption>
+<p><img src="./images/dataset.png" height="340" class="figure-img"></p>
+<figcaption>The dataset. We see a general trend that as shoe size increases, height also slightly increases.</figcaption>
+</figure>
+</div>
+<p>Our goal, using linear regression, is to create a formula where we can enter in someone’s shoe size, and that computes their height. Looking at the data, the general pattern seems to follow one of a straight line. The formula we will thus use, is the straight line equation <span class="math inline">\(y = ax + b\)</span>, where <span class="math inline">\(y\)</span> is the height, and <span class="math inline">\(x\)</span> is the shoe size.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/dataset_unfitted.png" height="340" class="figure-img"></p>
+<figcaption>A straight line passes through our data, however, it does not allow us to make predictions, since it has incorrect values for slope and intercept.</figcaption>
+</figure>
+</div>
+<p>Next, we need to find proper values for the slope and intercept of our straight line equation. This is where linear regression comes into play. Linear regression allows us to find the values of slope and intercept that ‘fit the line best to the data’, meaning that on average the distance to the line and the data is small.</p>
+<p>We will use the following function to measure how good the line fits to our data: <span class="math display">\[
+\mathcal{L} = \frac{1}{N} \sum^N_{i=1}{(y_i - f(x_i))^2}
+\]</span></p>
+<p>This function computes <span class="math inline">\(\mathcal{L}\)</span>, the average distance between the line (predicted heights) and data points (actual heights), where <span class="math inline">\(N\)</span> is the amount of data points, <span class="math inline">\(y_i\)</span> is the target value (a person’s height) and <span class="math inline">\(f(x_i)\)</span> is the function that estimates height given a shoe size <span class="math inline">\(x_i\)</span>.</p>
+<p>If we find the line that corresponds to the lowest value of <span class="math inline">\(\mathcal{L}\)</span>, we have found the line that lies, on average, closest to all data points. The central belief in linear regression is that unseen data points will also lie close to the line, allowing us to make predictions. In our case, the prediction function <span class="math inline">\(f(x_i)\)</span> is our straight line equation</p>
+<p><span class="math display">\[
+ax + b
+\]</span></p>
+<p>Which could suit as a good estimation line, given suitable parameter values (weights) <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> for intercept and slope.</p>
+<p>Our task now is to find the weights that minimize</p>
+<p><span class="math display">\[
+\mathcal{L} = \frac{1}{N} \sum^N_{i=1}{(y_i - (ax_i + b))^2}
+\]</span></p>
+</section>
+<section id="how-to-find-the-optimal-linear-regression-weights" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-find-the-optimal-linear-regression-weights">How to find the optimal linear regression weights?</h2>
+<p>This next section is more technical and requires a basic understanding of linear algebra and a little matrix calculus. Feel free to skip over it, the calculations made are not necessary for an understanding of linear regression. However, those of you who enjoy the mathematics (such as myself), will hopefully find the next section delightfully elegant. We start with a change in notation, and drop the familiar <span class="math inline">\(ax_i +b\)</span> in favour of <span class="math inline">\(w_0 + w_1x_i\)</span>, which states exactly the same, but whose coefficients are easier to generalize to vector data points.</p>
+<p>Let us now define <span class="math inline">\(\mathbf{x}_i\)</span> as <span class="math inline">\(\mathbf{x}_i = \begin{pmatrix}1 &amp; x_i \end{pmatrix}^\top\)</span>. This allows us to neatly express <span class="math inline">\(f(x_i) =  w_0 \cdot 1 + w_1 \cdot x_i\)</span>, as <span class="math inline">\(\mathbf{w}^\top\mathbf{x}_i\)</span>, and we can begin to rewrite our original expression for <span class="math inline">\(\mathcal{L}\)</span>. <span class="math display">\[
+\begin{align}
+\mathcal{L} &amp;= \frac{1}{N} \sum^N_{i=1}{(y_i - \mathbf{w}^\top\mathbf{x}_i)^2} \\
+&amp;= \frac{1}{N}(\mathbf{y} - \mathbf{Xw})^\top(\mathbf{y} - \mathbf{Xw})
+\end{align}
+\]</span></p>
+<p>Where</p>
+<p><span class="math display">\[
+\mathbf{X} = \begin{pmatrix}
+\mathbf{x}_0^\top \\
+\vdots \\
+\mathbf{x}_N^\top
+\end{pmatrix}, \quad \mathbf{w} = \begin{pmatrix}
+w_0 \\
+w_1
+\end{pmatrix},\quad \mathbf{y} = \begin{pmatrix}
+y_0 \\
+y_1 \\
+\vdots \\
+y_N
+\end{pmatrix}
+\]</span></p>
+<p>Since our loss is quadratic, we can find the lowest point by differentiating with respect to <span class="math inline">\(\mathbf{w}\)</span>, equating to zero, and solving for <span class="math inline">\(\mathbf{w}\)</span>. This will give the weights corresponding to the line with the lowest average distance from the data points.</p>
+<p>We start by foiling out the expression <span class="math display">\[
+\begin{align}
+&amp; \frac{1}{N}(\mathbf{y} - \mathbf{Xw})^\top(\mathbf{y} - \mathbf{Xw})\\
+&amp;= \frac{1}{N}(\mathbf{y}^\top - \mathbf{w}^\top\mathbf{X}^\top)(\mathbf{y} - \mathbf{Xw}) \\
+&amp;= \frac{1}{N}(\mathbf{y}^\top\mathbf{y} - \mathbf{w}^\top\mathbf{X}^\top\mathbf{y} - \mathbf{y}^\top\mathbf{Xw} + \mathbf{w}^\top\mathbf{X}^\top\mathbf{Xw}) \\
+&amp;= \frac{1}{N}\mathbf{y}^\top\mathbf{y} - \frac{2}{N}\mathbf{w}^\top\mathbf{X}^\top\mathbf{y} + \frac{1}{N}\mathbf{w}^\top\mathbf{X}^\top\mathbf{Xw}
+\end{align}
+\]</span></p>
+<p>Differentiating with respect to <span class="math inline">\(\mathbf{w}\)</span> we get</p>
+<p><span class="math display">\[
+\frac{\partial\mathcal{L}}{\partial\mathbf{w}} = -\frac{2}{N}\mathbf{X}^\top\mathbf{y} + \frac{2}{N}\mathbf{X}^\top\mathbf{X}\mathbf{w}
+\]</span></p>
+<p>Equating to zero and solving for <span class="math inline">\(\mathbf{w}\)</span>:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math display">\[
+\begin{align}
+&amp;\mathbf{X}^\top\mathbf{X}\mathbf{w} = \mathbf{X}^\top\mathbf{y}\\
+&amp;\hat{\mathbf{w}} = (\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top\mathbf{y}
+\end{align}
+\]</span></p>
+</section>
+<section id="how-to-make-predictions-using-the-optimal-weights" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-make-predictions-using-the-optimal-weights">How to make predictions using the optimal weights?</h2>
+<p>Now that we have found parameters for <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, we can plug these into our straight line equation. We are now able to predict heights. Given a not-seen-before datapoint of someone’s shoe size (red point), we see that our formula predicts that their height is at the orange point.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/dataset_prediction.png" height="340" class="figure-img"></p>
+<figcaption>Using the found slope and intercept, the line passes close to all points, allowing us to make predictions.</figcaption>
 </figure>
 </div>
 </section>
-<section id="how-to-create-a-tensor" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-create-a-tensor">How to create a tensor?</h2>
-<p>First, <code>import torch</code>. After that we can create a tensor in two ways. From existing data, or with new data.</p>
-<div id="c9a126bb" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor from existing data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tensor_from_data <span class="op">=</span> torch.tensor(data)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tensor_from_data)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor with new data</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ones_tensor <span class="op">=</span> torch.ones((<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ones_tensor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<details>
-<summary>
-Show output
-</summary>
-<div id="f2564d04" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-stdout">
-<pre><code>tensor([[1, 2],
-        [3, 4]])
-tensor([[1., 1.],
-        [1., 1.]])</code></pre>
-</div>
-</div>
-</details>
-</section>
-<section id="how-to-do-math-with-tensors" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-do-math-with-tensors">How to do math with tensors?</h2>
-<p>There are three ways to perform a math operation in PyTorch. Lets see an example with addition.</p>
-<div id="8c78617c" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Initialization code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize tensors to do math with</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> (<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tensor1 <span class="op">=</span> torch.rand(shape)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>tensor2 <span class="op">=</span> torch.ones(shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<div id="3b5b9171" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Python operators</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tensor1 <span class="op">+</span> tensor2</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Built-in tensor method</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>tensor1.add(tensor2)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Output tensor</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>output_tensor <span class="op">=</span> torch.zeros(shape)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>torch.add(tensor1, tensor2, out<span class="op">=</span>output_tensor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Currently, I am not sure about the difference between these three methods. I imagine that in a situation where we need to choose between these, one of the three method will feel most natural to use.</p>
-</div>
-</div>
-</section>
-<section id="some-built-in-tensor-methods" class="level2">
-<h2 class="anchored" data-anchor-id="some-built-in-tensor-methods">Some built-in tensor methods</h2>
-<p>There are over 1200 methods that we can perform on tensors. They can all be found at the <a href="https://docs.pytorch.org/docs/stable/torch.html">PyTorch documentation</a>. I skimmed through them and will give my beginner-opinion on which ones I believe will allow us to get a good start.</p>
-<details>
-<summary>
-<span class="foldable-h3">Mutating and indexing tensors</span>
-</summary>
-<p>Knowing how to select and change individual elements as well as groups of elements is an essential skill to have, and easily learned. Indexing tensors works a lot like python list and numpy array indexing.</p>
-<div id="cf65d376" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.rand((<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>first_row <span class="op">=</span> tensor[<span class="dv">0</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>first_two_row <span class="op">=</span> tensor[:<span class="dv">2</span>]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>first_col <span class="op">=</span> tensor[:, <span class="dv">0</span>]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>first_two_col <span class="op">=</span> tensor[:, :<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<details>
-<summary>
-Show output
-</summary>
-<div id="9ed3e8ff" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-stdout">
-<pre><code>Entire tensor:
-tensor([[0.4917, 0.5003, 0.4915],
-        [0.6349, 0.1063, 0.3295],
-        [0.0865, 0.7065, 0.6171]]) 
-
-first row:
-tensor([0.4917, 0.5003, 0.4915]) 
-
-first two rows:
-tensor([[0.4917, 0.5003, 0.4915],
-        [0.6349, 0.1063, 0.3295]]) 
-
-first column:
-tensor([0.4917, 0.6349, 0.0865]) 
-
-first two columns:
-tensor([[0.4917, 0.5003],
-        [0.6349, 0.1063],
-        [0.0865, 0.7065]])</code></pre>
-</div>
-</div>
-</details>
-<p>Lets now look at how to combine multiple tensors.</p>
-<div id="c09e373d" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tensor_ones <span class="op">=</span> torch.ones((<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tensor_ones[:, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine multiple tensors horizontally</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>wide_combine <span class="op">=</span> torch.cat((tensor, tensor_ones), dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>even_wider_combine <span class="op">=</span> torch.cat((tensor, tensor_ones, tensor_ones), dim<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine multiple tensors vertically</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>high_combine <span class="op">=</span> torch.cat((tensor, tensor_ones), dim<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<details>
-<summary>
-Show output
-</summary>
-<div id="4fd1175f" class="cell" data-execution_count="9">
-<div class="cell-output cell-output-stdout">
-<pre><code>Horizontal combine:
-tensor([[0.4917, 0.5003, 0.4915, 4.0000, 1.0000, 1.0000],
-        [0.6349, 0.1063, 0.3295, 4.0000, 1.0000, 1.0000],
-        [0.0865, 0.7065, 0.6171, 4.0000, 1.0000, 1.0000]]) 
-
-We can combine any number of tensors we want:
-tensor([[0.4917, 0.5003, 0.4915, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000],
-        [0.6349, 0.1063, 0.3295, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000],
-        [0.0865, 0.7065, 0.6171, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000]]) 
-
-Vertical combine
-tensor([[0.4917, 0.5003, 0.4915],
-        [0.6349, 0.1063, 0.3295],
-        [0.0865, 0.7065, 0.6171],
-        [4.0000, 1.0000, 1.0000],
-        [4.0000, 1.0000, 1.0000],
-        [4.0000, 1.0000, 1.0000]])</code></pre>
-</div>
-</div>
-</details>
-</details>
-<details>
-<summary>
-<span class="foldable-h3">Comparing tensors</span>
-</summary>
-<p>Just like with the math operations, we have different notation options to choose from when comparing tensors.</p>
-<div id="4af6e4ff" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tensor1 <span class="op">=</span> torch.zeros((<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tensor1[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tensor2 <span class="op">=</span> torch.ones((<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if two tensors are equal</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>torch.equal(tensor1, tensor2)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>tensor1 <span class="op">==</span> tensor2</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if one tensor is greater or equal to another tensor</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>torch.greater_equal(tensor1, tensor2)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>torch.ge(tensor1, tensor2)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>tensor1 <span class="op">&gt;=</span> tensor2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<details>
-<summary>
-Show output
-</summary>
-<div id="67360649" class="cell" data-execution_count="11">
-<div class="cell-output cell-output-stdout">
-<pre><code>Tensor 1 equals tensor 2:
-tensor([[False, False],
-        [False, False]]) 
-
-Tensor 1 &gt;= tensor 2:
-tensor([[ True, False],
-        [False, False]])</code></pre>
-</div>
-</div>
-</details>
-Other comparison operators are implemented like the ones shown above in the way you probably expect. If you can’t find the one you’re looking for, there exists a <a href="(https://docs.pytorch.org/docs/stable/torch.html#comparison-ops)">list of all comparison operators</a> on the PyTorch website.
-</details>
-<details>
-<summary>
-<span class="foldable-h3">More creation methods</span>
-</summary>
-<p>Being able to instantiate a tensor with other values than ones and zeros is also possible.</p>
-<div id="55838af4" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor filled with the number 3</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>threes <span class="op">=</span> torch.full(size<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), fill_value<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor based on the shape of another</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>tensor_with_shape <span class="op">=</span> torch.rand((<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>tensor_zeros <span class="op">=</span> torch.zeros_like(tensor_with_shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<details>
-<summary>
-Show output
-</summary>
-<div id="efef263a" class="cell" data-execution_count="13">
-<div class="cell-output cell-output-stdout">
-<pre><code>threes:
-tensor([[3, 3],
-        [3, 3]]) 
-
-tensor_with_shape:
-tensor([[0.9459, 0.3627, 0.1254],
-        [0.3131, 0.3433, 0.3845],
-        [0.2971, 0.2271, 0.8955],
-        [0.5679, 0.0303, 0.2326]]) 
-
-tensor_zeros:
-tensor([[0., 0., 0.],
-        [0., 0., 0.],
-        [0., 0., 0.],
-        [0., 0., 0.]])</code></pre>
-</div>
-</div>
-</details>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The way we created <code>tensor_zeros</code> based on the shape of another tensor using <code>zeros_like</code> can also be done to the other ways we learned how to create a tensor, just by suffixing the method with <code>_like</code>.</p>
-</div>
-</div>
-<section id="random-numbers" class="level3">
-<h3 class="anchored" data-anchor-id="random-numbers">Random numbers</h3>
-<div id="1661012b" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> (<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set an optional seed for reproducibility</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">1</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Random integers </span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>rand_int <span class="op">=</span> torch.randint(<span class="dv">10</span>, shape)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>rand_int_lower_bound <span class="op">=</span> torch.randint(<span class="dv">8</span>, <span class="dv">10</span>, shape)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Tensor values drawn from a distribution</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>normal <span class="op">=</span> torch.randn(shape)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>probability_tensor <span class="op">=</span> torch.empty(shape).uniform_(<span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># The '_' suffix modifies the variable in place</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>bernoulli <span class="op">=</span>torch.bernoulli(probability_tensor) <span class="co"># Pass a tensor with values of how likely a '1' is.</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle numbers from 0 to n-1 </span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>permutation <span class="op">=</span> torch.randperm(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<details>
-<summary>
-Show output
-</summary>
-<div id="c7822a3c" class="cell" data-execution_count="15">
-<div class="cell-output cell-output-stdout">
-<pre><code>rand_int):
-tensor([[5, 9, 4],
-        [8, 3, 3],
-        [1, 1, 9]]) 
-
-rand_int_lower_bound:
-tensor([[8, 8, 9],
-        [8, 9, 9],
-        [8, 8, 9]]) 
-
-normal:
-tensor([[-1.1948,  0.0250, -0.7627],
-        [ 1.3969, -0.3245,  0.2879],
-        [ 1.0579,  0.9621,  0.3935]]) 
-
-probability_tensor: 
-
-tensor([[0.7140, 0.2676, 0.9906],
-        [0.2885, 0.8750, 0.5059],
-        [0.2366, 0.7570, 0.2346]])
-bernoulli:
-tensor([[1., 0., 1.],
-        [1., 1., 0.],
-        [0., 0., 0.]]) 
-
-permutation:
-tensor([1, 9, 3, 6, 8, 0, 5, 2, 7, 4]) 
-</code></pre>
-</div>
-</div>
-</details>
-</section></details>
-<p>Thank you for reading! Note that these are just the basics. Now is your time to do some work yourself. Read the documentation, and try some basic operations. As a starter, this post did not cover the different <a href="https://docs.pytorch.org/docs/stable/linalg.html">linear algebra</a> operations, even though they are very useful! You might also peek at the more technical <a href="https://docs.pytorch.org/docs/stable/cuda.html">GPU operations</a>. See you on day 2!</p>
+<section id="what-next" class="level2">
+<h2 class="anchored" data-anchor-id="what-next">What next?</h2>
+<p>This introduction covered the basis of linear regression, and how we can use it to predict a quantity, given a certain input. Some questions might naturally arise: What if we have multiple inputs? What if the data points do not lie on a straight line?</p>
+<p>In fact, the answers to both questions lie in the <span class="math inline">\(\mathbf{x}_i\)</span> input vector. In linear regression, “linear” refers not to the shape of the data, but to linearity in the model parameters. By expanding the input vector to include nonlinear transformations of the original variables, linear regression can model nonlinear relationships while remaining linear in the weights.Multiple inputs are handled naturally by including them in the input vector. Nonlinear relationships are handled by feature expansion: <span class="math inline">\(\mathbf{x}_i = \begin{pmatrix} 1 &amp; x_i &amp; x_i^2 &amp; x_i^3 \end{pmatrix}^\top\)</span>. As a result, linear regression remains a suitable and powerful method even when the data do not lie on a straight line. The optimal weights are still obtained in exactly the same way; only the definition of the input vector changes.</p>
 
 
 </section>
 
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The astute reader might notice that the last step assumes that the inverse of <span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span> exists, which in practice is not always the case, for example, when the number of features is greater than the number of data points. In practice <span class="math inline">\(\mathbf{X}\)</span> is decomposed using QR or SV decomposition, which gets rid of the invertibility requirement<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

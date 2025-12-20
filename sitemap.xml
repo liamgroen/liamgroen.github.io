@@ -2,50 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://liamgroen.nl/posts.html</loc>
-    <lastmod>2025-12-20T13:01:03.801Z</lastmod>
+    <lastmod>2025-12-20T13:07:56.477Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/pytorch-basics.html</loc>
-    <lastmod>2025-12-20T13:01:04.804Z</lastmod>
+    <lastmod>2025-12-20T13:07:57.445Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-5-save-and-load-model/index.html</loc>
-    <lastmod>2025-12-20T13:01:04.758Z</lastmod>
+    <lastmod>2025-12-20T13:07:57.400Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-2-datasets-dataloaders/index.html</loc>
-    <lastmod>2025-12-20T13:01:04.151Z</lastmod>
+    <lastmod>2025-12-20T13:07:56.813Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-1-tensors/index.html</loc>
-    <lastmod>2025-12-20T13:01:03.846Z</lastmod>
+    <lastmod>2025-12-20T13:07:56.520Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/backpropagation/index.html</loc>
-    <lastmod>2025-12-20T13:01:03.823Z</lastmod>
+    <lastmod>2025-12-20T13:07:56.497Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/index.html</loc>
-    <lastmod>2025-12-20T13:01:03.796Z</lastmod>
+    <lastmod>2025-12-20T13:07:56.474Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/linear-regression/index.html</loc>
-    <lastmod>2025-12-20T13:01:03.835Z</lastmod>
+    <lastmod>2025-12-20T13:07:56.509Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-3-transforms/index.html</loc>
-    <lastmod>2025-12-20T13:01:04.448Z</lastmod>
+    <lastmod>2025-12-20T13:07:57.106Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html</loc>
-    <lastmod>2025-12-20T13:01:04.796Z</lastmod>
+    <lastmod>2025-12-20T13:07:57.438Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html</loc>
-    <lastmod>2025-12-20T13:01:04.449Z</lastmod>
+    <lastmod>2025-12-20T13:07:57.107Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/about.html</loc>
-    <lastmod>2025-12-20T13:01:03.796Z</lastmod>
+    <lastmod>2025-12-20T13:07:56.474Z</lastmod>
   </url>
 </urlset>

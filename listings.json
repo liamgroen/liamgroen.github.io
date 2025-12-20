@@ -2,12 +2,12 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/linear-regression/index.html",
       "/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html",
       "/posts/pytorch-basics/day-5-save-and-load-model/index.html",
       "/posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html",
       "/posts/pytorch-basics/day-3-transforms/index.html",
       "/posts/pytorch-basics/day-2-datasets-dataloaders/index.html",
-      "/posts/linear-regression/index.html",
       "/posts/pytorch-basics/day-1-tensors/index.html",
       "/posts/backpropagation/index.html"
     ]
@@ -26,12 +26,12 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/linear-regression/index.html",
       "/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html",
       "/posts/pytorch-basics/day-5-save-and-load-model/index.html",
       "/posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html",
       "/posts/pytorch-basics/day-3-transforms/index.html",
       "/posts/pytorch-basics/day-2-datasets-dataloaders/index.html",
-      "/posts/linear-regression/index.html",
       "/posts/pytorch-basics/day-1-tensors/index.html",
       "/posts/backpropagation/index.html"
     ]

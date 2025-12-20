@@ -5,8 +5,8 @@ image: ./images/preview.png
 
 description: "Do you ever wonder how to predict a person's height based on their shoe size? Or how a line of best fit through data is found? This post covers how to use linear regression for prediction and "
 
-date: "2025-05-08" 
-date-meta: "2025-05-08"
+date: "2025-12-20" 
+date-meta: "2025-12-20"
 
 keywords: [Tensor]
 ---

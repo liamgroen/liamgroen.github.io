@@ -3,7 +3,7 @@ title: "Machine Learning Basics - Linear Regression"
 pagetitle: "Machine Learning Basics - Linear Regression"
 image: ./images/preview.png
 
-description: "Do you ever wonder how to predict a person's height based on their shoe size? Or how a line of best fit through data is found? This post covers how to use linear regression for prediction and "
+description: "Do you ever wonder how to predict a person's height based on their shoe size? Or how a line of best fit through data is found? This post covers how to use linear regression to predict a quantity, based on input data. We will show what linear regression is, and how to use it."
 
 date: "2025-12-20" 
 date-meta: "2025-12-20"

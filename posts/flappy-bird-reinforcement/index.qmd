@@ -50,9 +50,9 @@ Beside normalization, other things that seemed to improve both agent performance
 ## Beat my agent!
 I finally reached my goal of having Flappy Bird play itself! What you are seeing below is my agent playing my environment live in your browser, no prerecorded shenanigans. If you want to play against it, you can too.  If you're feeling lucky, select 'Duel' and try to beat it!  If you are curious how I made my agent play on this page, check out [this tutorial I made](../pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.qmd), or go over to my [Hugging Face account](https://huggingface.co/spaces/liamgroen/Flappy-Bird-RL-Agent/tree/main)!
 
+<div class="iframe-container">
 <iframe
 	src="https://liamgroen-flappy-bird-rl-agent.hf.space"
 	frameborder="0"
-	width="800"
-	height="600"
 ></iframe>
+</div>

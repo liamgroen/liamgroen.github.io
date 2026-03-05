@@ -5,3 +5,30 @@
 .keywords {
     display: none;
 }
+
+/* Responsive iframe container */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Desktop max width */
+    margin: 0 auto;
+    padding-bottom: 75%; /* 4:3 aspect ratio for desktop (600/800) */
+    height: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .iframe-container {
+        max-width: 95%;
+        padding-bottom: 160%; /* Slightly taller for mobile */
+    }
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}

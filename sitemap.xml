@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://liamgroen.nl/posts.html</loc>
-    <lastmod>2026-03-05T14:06:13.072Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.082Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/pytorch-basics.html</loc>
-    <lastmod>2026-03-05T14:06:14.044Z</lastmod>
+    <lastmod>2026-03-05T14:33:12.062Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/linear-regression/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.106Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.116Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.706Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.721Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-1-tensors/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.117Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.127Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-3-transforms/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.705Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.721Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.069Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.079Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html</loc>
-    <lastmod>2026-03-05T14:06:14.037Z</lastmod>
+    <lastmod>2026-03-05T14:33:12.055Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-2-datasets-dataloaders/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.411Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.423Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/pytorch-basics/day-5-save-and-load-model/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.999Z</lastmod>
+    <lastmod>2026-03-05T14:33:12.016Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/backpropagation/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.092Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.101Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/posts/flappy-bird-reinforcement/index.html</loc>
-    <lastmod>2026-03-05T14:06:13.094Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.104Z</lastmod>
   </url>
   <url>
     <loc>https://liamgroen.nl/about.html</loc>
-    <lastmod>2026-03-05T14:06:13.069Z</lastmod>
+    <lastmod>2026-03-05T14:33:11.079Z</lastmod>
   </url>
 </urlset>

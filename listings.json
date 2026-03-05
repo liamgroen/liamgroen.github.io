@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/flappy-bird-reinforcement/index.html",
       "/posts/linear-regression/index.html",
       "/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html",
       "/posts/pytorch-basics/day-5-save-and-load-model/index.html",
@@ -26,6 +27,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/flappy-bird-reinforcement/index.html",
       "/posts/linear-regression/index.html",
       "/posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html",
       "/posts/pytorch-basics/day-5-save-and-load-model/index.html",

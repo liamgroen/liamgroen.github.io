@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,14 +76,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-7b59f535f4be280c95e9d201c1713015.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -434,7 +434,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <section id="how-to-create-a-tensor" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-create-a-tensor">How to create a tensor?</h2>
 <p>First, <code>import torch</code>. After that we can create a tensor in two ways. From existing data, or with new data.</p>
-<div id="d35db9bd" class="cell" data-execution_count="2">
+<div id="ec069e25" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor from existing data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tensor_from_data <span class="op">=</span> torch.tensor(data)</span>
@@ -448,7 +448,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <summary>
 Show output
 </summary>
-<div id="76359ace" class="cell" data-execution_count="3">
+<div id="436fc0f7" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor([[1, 2],
         [3, 4]])
@@ -461,7 +461,7 @@ tensor([[1., 1.],
 <section id="how-to-do-math-with-tensors" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-do-math-with-tensors">How to do math with tensors?</h2>
 <p>There are three ways to perform a math operation in PyTorch. Lets see an example with addition.</p>
-<div id="b601d121" class="cell" data-execution_count="4">
+<div id="65f6d7dd" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Initialization code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize tensors to do math with</span></span>
@@ -470,7 +470,7 @@ tensor([[1., 1.],
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>tensor2 <span class="op">=</span> torch.ones(shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="52dc0084" class="cell" data-execution_count="5">
+<div id="9ec9e02e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Python operators</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tensor1 <span class="op">+</span> tensor2</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -503,7 +503,7 @@ Note
 <span class="foldable-h3">Mutating and indexing tensors</span>
 </summary>
 <p>Knowing how to select and change individual elements as well as groups of elements is an essential skill to have, and easily learned. Indexing tensors works a lot like python list and numpy array indexing.</p>
-<div id="b703b239" class="cell" data-execution_count="6">
+<div id="08ea65da" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tensor <span class="op">=</span> torch.rand((<span class="dv">3</span>, <span class="dv">3</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>first_row <span class="op">=</span> tensor[<span class="dv">0</span>]</span>
@@ -515,32 +515,32 @@ Note
 <summary>
 Show output
 </summary>
-<div id="944684f1" class="cell" data-execution_count="7">
+<div id="5b2e654d" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Entire tensor:
-tensor([[0.1687, 0.7719, 0.5169],
-        [0.7622, 0.4319, 0.9383],
-        [0.2977, 0.0940, 0.3587]]) 
+tensor([[0.7804, 0.0694, 0.8002],
+        [0.5857, 0.9967, 0.5617],
+        [0.2158, 0.1426, 0.2500]]) 
 
 first row:
-tensor([0.1687, 0.7719, 0.5169]) 
+tensor([0.7804, 0.0694, 0.8002]) 
 
 first two rows:
-tensor([[0.1687, 0.7719, 0.5169],
-        [0.7622, 0.4319, 0.9383]]) 
+tensor([[0.7804, 0.0694, 0.8002],
+        [0.5857, 0.9967, 0.5617]]) 
 
 first column:
-tensor([0.1687, 0.7622, 0.2977]) 
+tensor([0.7804, 0.5857, 0.2158]) 
 
 first two columns:
-tensor([[0.1687, 0.7719],
-        [0.7622, 0.4319],
-        [0.2977, 0.0940]])</code></pre>
+tensor([[0.7804, 0.0694],
+        [0.5857, 0.9967],
+        [0.2158, 0.1426]])</code></pre>
 </div>
 </div>
 </details>
 <p>Lets now look at how to combine multiple tensors.</p>
-<div id="75d64299" class="cell" data-execution_count="8">
+<div id="a6e96b3e" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tensor_ones <span class="op">=</span> torch.ones((<span class="dv">3</span>,<span class="dv">3</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tensor_ones[:, <span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -555,22 +555,22 @@ tensor([[0.1687, 0.7719],
 <summary>
 Show output
 </summary>
-<div id="602ebd8d" class="cell" data-execution_count="9">
+<div id="3d7b7e6b" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>Horizontal combine:
-tensor([[0.1687, 0.7719, 0.5169, 4.0000, 1.0000, 1.0000],
-        [0.7622, 0.4319, 0.9383, 4.0000, 1.0000, 1.0000],
-        [0.2977, 0.0940, 0.3587, 4.0000, 1.0000, 1.0000]]) 
+tensor([[0.7804, 0.0694, 0.8002, 4.0000, 1.0000, 1.0000],
+        [0.5857, 0.9967, 0.5617, 4.0000, 1.0000, 1.0000],
+        [0.2158, 0.1426, 0.2500, 4.0000, 1.0000, 1.0000]]) 
 
 We can combine any number of tensors we want:
-tensor([[0.1687, 0.7719, 0.5169, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000],
-        [0.7622, 0.4319, 0.9383, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000],
-        [0.2977, 0.0940, 0.3587, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000]]) 
+tensor([[0.7804, 0.0694, 0.8002, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000],
+        [0.5857, 0.9967, 0.5617, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000],
+        [0.2158, 0.1426, 0.2500, 4.0000, 1.0000, 1.0000, 4.0000, 1.0000, 1.0000]]) 
 
 Vertical combine
-tensor([[0.1687, 0.7719, 0.5169],
-        [0.7622, 0.4319, 0.9383],
-        [0.2977, 0.0940, 0.3587],
+tensor([[0.7804, 0.0694, 0.8002],
+        [0.5857, 0.9967, 0.5617],
+        [0.2158, 0.1426, 0.2500],
         [4.0000, 1.0000, 1.0000],
         [4.0000, 1.0000, 1.0000],
         [4.0000, 1.0000, 1.0000]])</code></pre>
@@ -583,7 +583,7 @@ tensor([[0.1687, 0.7719, 0.5169],
 <span class="foldable-h3">Comparing tensors</span>
 </summary>
 <p>Just like with the math operations, we have different notation options to choose from when comparing tensors.</p>
-<div id="90fe7d1f" class="cell" data-execution_count="10">
+<div id="b5374820" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tensor1 <span class="op">=</span> torch.zeros((<span class="dv">2</span>,<span class="dv">2</span>))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tensor1[<span class="dv">0</span>][<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>tensor2 <span class="op">=</span> torch.ones((<span class="dv">2</span>,<span class="dv">2</span>))</span>
@@ -601,7 +601,7 @@ tensor([[0.1687, 0.7719, 0.5169],
 <summary>
 Show output
 </summary>
-<div id="131ca2f1" class="cell" data-execution_count="11">
+<div id="372fda0b" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>Tensor 1 equals tensor 2:
 tensor([[False, False],
@@ -620,7 +620,7 @@ Other comparison operators are implemented like the ones shown above in the way 
 <span class="foldable-h3">More creation methods</span>
 </summary>
 <p>Being able to instantiate a tensor with other values than ones and zeros is also possible.</p>
-<div id="d786c0de" class="cell" data-execution_count="12">
+<div id="ba6ecb0c" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a tensor filled with the number 3</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>threes <span class="op">=</span> torch.full(size<span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>), fill_value<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -632,17 +632,17 @@ Other comparison operators are implemented like the ones shown above in the way 
 <summary>
 Show output
 </summary>
-<div id="4e56fa48" class="cell" data-execution_count="13">
+<div id="97f463e3" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
 <pre><code>threes:
 tensor([[3, 3],
         [3, 3]]) 
 
 tensor_with_shape:
-tensor([[0.5163, 0.5426, 0.3876],
-        [0.7325, 0.0164, 0.3273],
-        [0.2222, 0.2227, 0.6239],
-        [0.3929, 0.4927, 0.4718]]) 
+tensor([[0.0520, 0.1277, 0.4573],
+        [0.0625, 0.4044, 0.2373],
+        [0.3699, 0.4883, 0.7031],
+        [0.2311, 0.3865, 0.5128]]) 
 
 tensor_zeros:
 tensor([[0., 0., 0.],
@@ -667,7 +667,7 @@ Tip
 </div>
 <section id="random-numbers" class="level3">
 <h3 class="anchored" data-anchor-id="random-numbers">Random numbers</h3>
-<div id="af326429" class="cell" data-execution_count="14">
+<div id="eee8b574" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shape <span class="op">=</span> (<span class="dv">3</span>,<span class="dv">3</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set an optional seed for reproducibility</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">1</span>)</span>
@@ -689,7 +689,7 @@ Tip
 <summary>
 Show output
 </summary>
-<div id="2787bf3b" class="cell" data-execution_count="15">
+<div id="c12aa81e" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <pre><code>rand_int):
 tensor([[5, 9, 4],

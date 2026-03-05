@@ -6,10 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="keywords" content="Contact, LinkedIn, Connect, About">
-<meta name="description" content="About Liam Groen. Get in contact with Liam Groen">
+<meta name="author" content="Liam Groen">
+<meta name="dcterms.date" content="2026-05-03">
+<meta name="keywords" content="Reinforcement Learning">
+<meta name="description" content="Have you ever wondered how reinforcement learning works? Well, me too! I trained an agent to master Flappy Bird. Watch it play or challenge it in this post!">
 
-<title>About – Liam's Learning</title>
+<title>No Labels? No Problem! Solving Flappy Bird With Reinforcement Learning – Liam's Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,27 +27,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-7b59f535f4be280c95e9d201c1713015.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-7b59f535f4be280c95e9d201c1713015.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -88,17 +91,46 @@ gtag('js', new Date());
 gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="About">
-<meta property="og:description" content="Posts about machine learning, deep learning, math and coding.">
-<meta property="og:image" content="https://liamgroen.nl/profile.png">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="No Labels? No Problem! Solving Flappy Bird With Reinforcement Learning">
+<meta property="og:description" content="Have you ever wondered how reinforcement learning works? Well, me too! I built a Flappy Bird clone and trained an agent to master it. Watch it play or challenge it in this post!">
+<meta property="og:image" content="https://liamgroen.nl/posts/flappy-bird-reinforcement/images/preview.png">
 <meta property="og:site_name" content="Liam's Learning">
-<meta property="og:image:height" content="2113">
-<meta property="og:image:width" content="1597">
+<meta property="og:image:height" content="484">
+<meta property="og:image:width" content="448">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -272,11 +304,11 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Liam’s Learning</span>
     </a>
   </div>
@@ -287,17 +319,17 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./pytorch-basics.html"> 
+    <a class="nav-link" href="../../pytorch-basics.html"> 
 <span class="menu-text">PyTorch Basics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -314,69 +346,137 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">No Labels? No Problem! Solving Flappy Bird With Reinforcement Learning</h1>
+                  <div>
+        <div class="description">
+          Have you ever wondered how reinforcement learning works? Well, me too! I built a Flappy Bird clone and trained an agent to master it. Watch it play or challenge it in this post!
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Non-technical</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Liam Groen </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 3, 2026</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">May 3, 2026</p>
+      </div>
+    </div>
+      
+    </div>
+    
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>Reinforcement Learning</p>
+    </div>
+  </div>
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reinforcement-learning-terminology" id="toc-reinforcement-learning-terminology" class="nav-link active" data-scroll-target="#reinforcement-learning-terminology">Reinforcement learning terminology</a></li>
+  <li><a href="#going-in-blind" id="toc-going-in-blind" class="nav-link" data-scroll-target="#going-in-blind">Going in blind</a></li>
+  <li><a href="#reinforcement-learning-made-easy-with-gymnasium" id="toc-reinforcement-learning-made-easy-with-gymnasium" class="nav-link" data-scroll-target="#reinforcement-learning-made-easy-with-gymnasium">Reinforcement learning made easy with Gymnasium</a></li>
+  <li><a href="#time-to-train" id="toc-time-to-train" class="nav-link" data-scroll-target="#time-to-train">Time to train!</a>
+  <ul class="collapse">
+  <li><a href="#intermezzo-q-learning" id="toc-intermezzo-q-learning" class="nav-link" data-scroll-target="#intermezzo-q-learning">Intermezzo: Q-learning</a></li>
+  </ul></li>
+  <li><a href="#i-understand-it-now" id="toc-i-understand-it-now" class="nav-link" data-scroll-target="#i-understand-it-now">I understand it now…</a></li>
+  <li><a href="#finally-a-flapping-bird" id="toc-finally-a-flapping-bird" class="nav-link" data-scroll-target="#finally-a-flapping-bird">Finally, a flapping bird</a></li>
+  <li><a href="#other-optimalizations" id="toc-other-optimalizations" class="nav-link" data-scroll-target="#other-optimalizations">Other optimalizations</a></li>
+  <li><a href="#beat-my-agent" id="toc-beat-my-agent" class="nav-link" data-scroll-target="#beat-my-agent">Beat my agent!</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="profile.png" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-<div>
-  <div class="keywords">
-    <div class="block-title">Keywords</div>
-    <p>Contact, LinkedIn, Connect, About</p>
-  </div>
-</div>
-</header><main class="content" id="quarto-document-content">
-
-<section id="about-me" class="level1">
-<h1>About Me</h1>
-<p>Hi, I’m <strong>Liam Groen</strong>, a student from the Netherlands with a deep interest in <strong>machine learning</strong>, <strong>data science</strong>, and <strong>mathematics</strong>.</p>
-<p>I’m currently focused on building a strong foundation in ML by combining theory and practice:<br>
-📘 Reading <em>Pattern Recognition and Machine Learning</em> by Bishop<br>
-🧪 Working through PyTorch tutorials and hands-on experiments<br>
-🎯 Committing to learn and build <em>something new every day</em></p>
-<p>This blog is where I document what I’m learning — not only as a study aid, but as a way to share insights and connect with others on a similar journey.</p>
-<hr>
-<section id="my-learning-goals" class="level2">
-<h2 data-anchor-id="my-learning-goals">My Learning Goals</h2>
-<ul>
-<li><p>Build solid understanding of machine learning fundamentals</p></li>
-<li><p>Get hands-on experience with real-world data and models</p></li>
-<li><p>Prepare for internships and a career in applied AI</p></li>
-</ul>
-<hr>
-</section>
-<section id="lets-connect" class="level2">
-<h2 data-anchor-id="lets-connect">Let’s Connect</h2>
-<p>I’m always open to collaborating, learning together, or hearing from others in the field. Feel free to reach out on <a href="https://www.linkedin.com/in/liamgroen">LinkedIn</a> or check out my <a href="https://github.com/liamgroen">GitHub projects</a>.</p>
-<p><img src="./nn-loss-landscape.png" class="img-fluid" alt="Neural network loss landscape"><br>
-<em>Visualizing the optimization terrain of deep networks — <a href="https://arxiv.org/abs/1712.09913">Li et al.&nbsp;(2018)</a>.</em></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
+
+
+
+
+<p>Reinforcement learning is the area in machine learning that still feels like magic to me. And if I want to do some magic myself, I will have to learn some spells. Better said, I can’t do reinforcement learning without knowing how it works. That’s why I dove into reinforcement learning by making my own Flappy Bird clone and having an RL agent play the game for me. In this post I go into the struggles I faced in getting a bird to flap by itself.</p>
+<p>Sounds interesting? Then read along. Just want to look at (or try to defeat) a flapping bird? Then <a href="#beat-my-agent">scroll down</a>.</p>
+<section id="reinforcement-learning-terminology" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning-terminology">Reinforcement learning terminology</h2>
+<p>First of all, the basics. RL works by having a computer program (often called an <em>agent</em>) engage with <em>something</em>. In my case, the Flappy Bird game. Every frame of the game, the agent makes an <em>observation</em>, the inputs to the program. A good agent will then make the right <em>action</em> in the environment, advancing it to the next <em>state</em>, where it will receive another observation, etc., etc. In my case a state is simply a snapshot of the game, and a possible observation could be the location of the next pipe. The action is of course to flap or not to flap.</p>
+<p><img src="./images/RL_cycle.png" class="img-fluid" alt="a clean, modern diagram illustrating the Reinforcement Learning (RL) cycle using the Flappy Bird game. The diagram shows a small yellow bird (Flappy Bird–style) flying between green pipes. The RL loop is visualized with arrows in a circular flow: Agent → Action → Environment → Reward → New State → Agent. The agent is represented as a small AI brain or neural network icon controlling the bird. The environment is the Flappy Bird world with sky background and pipes. The action is the bird flapping upward. The reward is shown as +1 points when passing a pipe and a negative reward when crashing. The state shows distances to pipes and bird height as simple visual indicators."></p>
+</section>
+<section id="going-in-blind" class="level2">
+<h2 class="anchored" data-anchor-id="going-in-blind">Going in blind</h2>
+<p>I am not much of a game developer, so when I looked up how to render things to the screen, one of the first things I saw was the HTML canvas, which would require me to program in JavaScript. Small issue, I only know Python and C#. Luckily I did not need to write production-grade code, and after around 5 days of tutorials and documentation reading, I had myself a Flappy Bird game. Now I only needed to make it play itself, but how? I looked on the internet and found some slightly heartbreaking results.</p>
+</section>
+<section id="reinforcement-learning-made-easy-with-gymnasium" class="level2">
+<h2 class="anchored" data-anchor-id="reinforcement-learning-made-easy-with-gymnasium">Reinforcement learning made easy with Gymnasium</h2>
+<p>The first thing I found was a framework called Gymnasium (which was created by OpenAI). It makes training an agent really easy by providing a common API for any training environment. Several out-of-the-box environments also exist to practice your skills. It is written in Python, which is a good choice since most people know it, and it is the language of PyTorch. However, I had already committed almost a week of time to learning JavaScript, so I looked if a JavaScript version existed. Unfortunately, there did not. I now had the choice of making my own Gymnasium-like JavaScript API or rewriting the entire thing in Python. At first I opted for sticking to JavaScript, but after realising that I eventually had to train an agent, which would probably need Python (sorry to all TensorFlow.js fans out there) I chose Gymnasium. It even has a Flappy Bird environment,but using that would make things way too easy and what’s the fun in that?. Since I’m doing this as a learning opportunity, I decided to make my own.</p>
+<p>Gymnasium makes it pretty easy to make your own environment, and if you are interested, I recommend reading the same <a href="https://Gymnasium.farama.org/tutorials/gymnasium_basics/environment_creation/">quick tutorial page</a> as I did since I won’t be going over it here.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/look_at_this.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>My agent, playing in the flappy bird environment i created</figcaption>
+</figure>
+</div>
+</section>
+<section id="time-to-train" class="level2">
+<h2 class="anchored" data-anchor-id="time-to-train">Time to train!</h2>
+<p>After creating my world-class Flappy Bird environment I needed to actually train my agent. I had not read any theory yet, and just wanted an actually flapping bird, so I decided to use the stable-baselines-3 library, which makes training an agent on a Gymnasium-API compatible environment ridiculously easy (in theory). To train an agent, you have to select one of several available training algorithms. I selected the Deep Q-Network (DQN) method, which seemed like a natural extension of Q-learning, but for continuous observation spaces.</p>
+<section id="intermezzo-q-learning" class="level3">
+<h3 class="anchored" data-anchor-id="intermezzo-q-learning">Intermezzo: Q-learning</h3>
+<p>Prior to all of this, I experimented with the out-of-the-box environments of Gymnasium, and followed a tutorial to solve the blackjack environment using Q-learning. It works by creating a giant table of (expected reward) values for every action and state. The higher the value in a cell <span class="math inline">\(c_{sa}\)</span>, the better it is to perform action <span class="math inline">\(a\)</span> at state <span class="math inline">\(s\)</span>. The agent then updates values as it learns according to the Bellman equation. This works fine for discrete observation spaces, since the table will have a finite size. However, in a Flappy Bird environment, the velocity of the bird can be 10, or 10.1, or 10.01, etc. We will never get a good table since we will most likely observe a never-seen-before state at every timestep. Deep Q-learning tries to overcome this problem by having a neural network estimate the Q-values of the cells in the table. (Or at least, I think it does, I’m still new to this)</p>
 </section>
 </section>
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://github.com/liamgroen" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-  <a href="/www.linkedin.com/in/liamgroen" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+<section id="i-understand-it-now" class="level2">
+<h2 class="anchored" data-anchor-id="i-understand-it-now">I understand it now…</h2>
+<p>So DQN it was, there was only one issue… No learning was happening! Or at least not what I had envisioned. The best my agent did was get past the first pipe. I trained the agent again, this time for longer, and still no difference. I changed my observations to absolute positions of the bird and pipes instead of relative to the agent, still no difference. I thought I might have coded my environment wrong, so I added a debug mode that added visuals of what the agent was ‘seeing’, but things looked as expected. I truly had no idea what was going wrong. I tried different training algorithms: PPO and A2C, but still no improvement. I then thought that maybe the task was too difficult, and made an option in the environment to have the first N pipes spawn at the same location, but this also caused no improvement. I now see that reinforcement learning is not as straightforward as I initially thought. I let the project sit for over a week since I had a busy period at school.</p>
+</section>
+<section id="finally-a-flapping-bird" class="level2">
+<h2 class="anchored" data-anchor-id="finally-a-flapping-bird">Finally, a flapping bird</h2>
+<p>On a random wednesday afternoon I returned to the project. I systematically changed variables in the learning process, when all of a sudden I stumbled upon an amazing agent. At this point I was doing a lot of testing to figure out why my agent was not learning to pass the pipes, so I had wrapped my environment in a vectorized environment, which drastically sped up training. In the golden run I had returned to some things I initially moved away from, such as PPO and relative object positions. I also added something new. I now normalized observations and actions by wrapping my environment with <code>VecNormalize</code>. Boom, over a 100 pipes passed (Which was the maximum an agent could reach with the training timestep-limit I had in place). I did some meticulous A/B testing and I am sure that the major factor in the improvement came from <code>VecNormalize</code>. On one hand this felt almost like cheating, since after such a small change suddenly the agent performed great! But on the other hand it was a validation that my environment and training setup were correctly implemented.</p>
+</section>
+<section id="other-optimalizations" class="level2">
+<h2 class="anchored" data-anchor-id="other-optimalizations">Other optimalizations</h2>
+<p>Beside normalization, other things that seemed to improve both agent performance and training process were tuning the parameters of PPO, and increasing the amount of environments in the vectorized environment. Additionally, shaping the rewards to give more feedback per timestep to the agent also improved the agent quite a lot. I did this by including a penalty for moving away from the center of the gap in the pipes. However, without normalization the agent still performed poorly! The major improvement definitely came from normalizing observations and actions. If you want to train your own bird using my environment, or see the code, go over to <a href="https://github.com/liamgroen/flappy-bird-training">my GitHub</a></p>
+</section>
+<section id="beat-my-agent" class="level2">
+<h2 class="anchored" data-anchor-id="beat-my-agent">Beat my agent!</h2>
+<p>I finally reached my goal of having Flappy Bird play itself! What you are seeing below is my agent playing my environment live in your browser, no prerecorded shenanigans. If you want to play against it, you can too. If you’re feeling lucky, select ‘Duel’ and try to beat it! If you are curious how I made my agent play on this page, check out <a href="../../posts/pytorch-basics/day-6-deploying-model-to-huggingface-spaces-through-onnx/index.html">this tutorial I made</a>, or go over to my <a href="https://huggingface.co/spaces/liamgroen/Flappy-Bird-RL-Agent/tree/main">Hugging Face account</a>!</p>
+<iframe src="https://liamgroen-flappy-bird-rl-agent.hf.space" frameborder="0" width="800" height="600">
+</iframe>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -392,6 +492,13 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
       window.document.body.appendChild(a);
     }
     setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -783,6 +890,38 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
     }
   });
   </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      if (authorPrefersDark) {
+          [baseTheme, altTheme] = [altTheme, baseTheme];
+      }
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "liamgroen/liamgroen.github.io";
+    script.dataset.repoId = "R_kgDOOcyOeQ";
+    script.dataset.category = "Announcements";
+    script.dataset.categoryId = "DIC_kwDOOcyOec4Cp8kl";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
 </div> <!-- /content -->
 
 

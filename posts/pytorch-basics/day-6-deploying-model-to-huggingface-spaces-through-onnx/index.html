@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,14 +76,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-7b59f535f4be280c95e9d201c1713015.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -430,7 +430,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="converting-to-onnx">Converting to ONNX</h2>
 <p>In this section I assume that you have a trained model called <code>torch_model</code>. If you don’t have one, or don’t know how to train your own model yet, <a href="../../../posts/pytorch-basics/day-4-building-and-training-a-neural-network/index.html">this post</a> explains how to build and train your own model.</p>
 <p>Let’s export our model to ONNX format. Since <code>onnx.export</code> runs the model, we need to supply an example input. Furthermore If we don’t want the batch size to be stationary, we need to set the <code>dynamic_axes</code> parameter.</p>
-<div id="bb97faa2" class="cell" data-execution_count="2">
+<div id="7fb4b4cb" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">1</span> <span class="co"># Random batch size</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>example_inputs <span class="op">=</span> torch.rand((batch_size, <span class="dv">28</span>, <span class="dv">28</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -451,14 +451,14 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <section id="running-the-onnx-model" class="level2">
 <h2 class="anchored" data-anchor-id="running-the-onnx-model">Running The ONNX Model</h2>
 <p>We can run <em>any</em> ONNX model inside python, using the <code>onnxruntime</code> package. Let’s run our own model that we just exported by downloading it from <code>converted_model.onnx</code>.</p>
-<div id="e1e2b0a6" class="cell" data-execution_count="3">
+<div id="e8b69fde" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnx</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> onnx.load(<span class="st">"converted_model.onnx"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>onnx.checker.check_model(model) <span class="co"># If this does not raise an error, we can continue</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Since ONNX does not support all data types that PyTorch uses, we need to do a bit of pre-processing before we can actually run the model.</p>
-<div id="0283a8cb" class="cell" data-execution_count="5">
+<div id="4ccdf0bc" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> onnxruntime <span class="im">as</span> ort</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -507,7 +507,7 @@ Tip
 <section id="sanity-checking-output" class="level2">
 <h2 class="anchored" data-anchor-id="sanity-checking-output">Sanity Checking Output</h2>
 <p>Using ONNX comes with the advantage of a standardized model format which we can run anywhere, but it still needs to give the same output as the model that we trained using PyTorch. Let’s make sure that nothing went wrong during conversion by comparing the PyTorch model output and the ONNX model output on the same input:</p>
-<div id="2ca79065" class="cell" data-execution_count="6">
+<div id="b4019824" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>torch_outputs <span class="op">=</span> torch_model(testing_image)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>torch_outputs <span class="op">=</span> to_numpy(torch_outputs)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -517,7 +517,7 @@ Tip
 <section id="how-to-get-onnx-predicted-labels" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-get-onnx-predicted-labels">How To Get ONNX predicted labels?</h2>
 <p>We can get the labels back by using <code>np.argmax</code>:</p>
-<div id="66f72fd5" class="cell" data-execution_count="7">
+<div id="61ce03fe" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idx_to_class <span class="op">=</span> {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>: <span class="st">'T-shirt/top'</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">'Trouser'</span>,</span>
@@ -562,7 +562,7 @@ Tip
 <li><h3 id="push-the-app" class="anchored">Push the app</h3>
 <p>We only need to specify 2 functions to create a UI and do inference. The <code>predict</code> function, and a preprocessing function. The last depends on the model that you are using. PyTorch pre-trained models also have their required preprocessing made available through <code>{weights_name.VERSION}.transforms()</code>:</p></li>
 </ol>
-<div id="9c7f9ff5" class="cell" data-execution_count="8">
+<div id="a3ae19fe" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show imports</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -572,7 +572,7 @@ Tip
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.models <span class="im">import</span> ResNet50_Weights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="ade069b6" class="cell" data-execution_count="9">
+<div id="446a747c" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> ResNet50_Weights.DEFAULT</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>preprocess <span class="op">=</span> weights.transforms() <span class="co"># Necessary input transformations</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ort_session <span class="op">=</span> ort.InferenceSession(<span class="st">"resnet50.onnx"</span>, providers<span class="op">=</span>[<span class="st">"CPUExecutionProvider"</span>])</span>
@@ -593,12 +593,12 @@ Tip
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> predicted_label</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>That’s it! Now we can build the interface:</p>
-<div id="c0b49c6b" class="cell" data-execution_count="10">
+<div id="83b1cc86" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>demo <span class="op">=</span> gr.Interface(predict, gr.Image(<span class="bu">type</span><span class="op">=</span><span class="st">"pil"</span>, image_mode<span class="op">=</span><span class="st">"RGB"</span>), gr.Label())</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>demo.launch()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Your file structure should look like this:</p>
-<div id="ffe24641" class="cell" data-execution_count="11">
+<div id="ed892180" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-stdout">
 <pre><code>.
 ├── README.md

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,14 +76,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-7b59f535f4be280c95e9d201c1713015.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -441,7 +441,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <li><p><strong>transform</strong> takes a PIL image and transforms it to a tensor.</p></li>
 </ul>
 <p>Let’s import the fashionMNIST dataset.</p>
-<div id="f959c1f8" class="cell" data-execution_count="1">
+<div id="ca3d1fc8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show imports</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
@@ -451,7 +451,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="a76a8e8b" class="cell" data-execution_count="2">
+<div id="27ca595b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> datasets.FashionMNIST(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    root<span class="op">=</span><span class="st">"data"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    train<span class="op">=</span><span class="va">True</span>,</span>
@@ -484,7 +484,7 @@ gtag('config', 'G-41DNWB0BJ3', { 'anonymize_ip': true});
 <summary>
 Show output
 </summary>
-<div id="045223c5" class="cell" data-execution_count="4">
+<div id="08028134" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>training_data:
 Dataset FashionMNIST
@@ -526,11 +526,11 @@ Tip
 <p>It’s always a good idea to inspect your data. Let’s look at <code>img</code> and <code>label</code> from the first row of data.</p>
 </div>
 </div>
-<div id="bbd2cad8" class="cell" data-execution_count="6">
+<div id="67f62c8d" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(img.squeeze(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.set_title(training_data.classes[label])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="089c7626" class="cell" data-execution_count="7">
+<div id="d2508a0d" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -545,7 +545,7 @@ Tip
 <h2 class="anchored" data-anchor-id="using-your-own-data-with-dataset">Using your own data with Dataset</h2>
 <p>We don’t always want to use predefined datasets. Very often we have our own data that we want to use. Pytorch has two ways of creating your own dataset. the <em>map-style</em> dataset, which is most commonly used, and the <em>iterable-style</em> dataset, for data that comes in on the fly, such as user-log data. The map-style behaves as you would likely expect from a dataset: you know its length beforehand, and you can select data through an index. For this, map-style datasets need to implement the <code>__len__</code> and <code>__getitem__</code> method. Let’s use our own data with a map-style Dataset.</p>
 <p>Consider the case where we have a csv file of image file names and the labels associated with them.</p>
-<div id="154a6ddc" class="cell" data-execution_count="9">
+<div id="d0824d61" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
@@ -586,7 +586,7 @@ Tip
 </div>
 </div>
 <p>We would define a custom dataset class as such:</p>
-<div id="7b3149d1" class="cell" data-execution_count="10">
+<div id="4ff5bdd8" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.io <span class="im">import</span> read_image</span>
@@ -624,7 +624,7 @@ Tip
 <section id="how-to-use-the-pytorch-dataloader-class" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-the-pytorch-dataloader-class">How to use the PyTorch DataLoader class</h2>
 <p>In the code above we only specified how to return a single (image, label) pair. In practice, we typically use lots of images and labels (called batches) for per training step. Additionally, we want to shuffle data (to prevent overfitting) and we want to speed up the process using multiprocessing. This is where the DataLoader class steps in. Let’s use the DataLoader to retrieve 64 images at once.</p>
-<div id="530f612d" class="cell" data-execution_count="11">
+<div id="62f3f875" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>train_dataloader <span class="op">=</span> DataLoader(training_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
@@ -634,7 +634,7 @@ Tip
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>train_image_features, train_labels <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(train_dataloader))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Remember that these images are the data used for one training step. Let’s see the batch of images that our dataloader just sent us.</p>
-<div id="2fe8bea3" class="cell" data-execution_count="12">
+<div id="698a69c6" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show visualization code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>figure <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
@@ -653,7 +653,7 @@ Tip
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-13-output-1.png" width="622" height="624" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-13-output-1.png" width="618" height="624" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -663,7 +663,7 @@ Tip
 <section id="different-ways-to-shuffle" class="level2">
 <h2 class="anchored" data-anchor-id="different-ways-to-shuffle">Different ways to shuffle</h2>
 <p>We can also control <em>how</em> data is shuffled (or in other words, the way that the random batch is sampled). We do this by setting the <code>sampler</code> parameter of the DataLoader. When doing this we have to set <code>shuffle=False</code>, since the shuffle parameter essentially sets the sampler parameter for us.</p>
-<div id="e60a487b" class="cell" data-execution_count="13">
+<div id="55214020" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data.sampler <span class="im">import</span> SequentialSampler, SubsetRandomSampler</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
